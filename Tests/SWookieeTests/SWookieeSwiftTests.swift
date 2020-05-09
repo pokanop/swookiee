@@ -4,7 +4,7 @@ import XCTest
 final class SWookieeTests: XCTestCase {
     func testRoot() {
         let expectation = XCTestExpectation()
-        Root.load { root, err in
+        Root.fetch { root, err in
             XCTAssertNil(err)
             guard let root = root?[0] else {
                 XCTFail()
@@ -23,7 +23,7 @@ final class SWookieeTests: XCTestCase {
 
     func testPeople() {
         let expectation = XCTestExpectation()
-        Person.load { people, err in
+        Person.fetch { people, err in
             XCTAssertNil(err)
             guard let people = people else {
                 XCTFail()
@@ -32,20 +32,21 @@ final class SWookieeTests: XCTestCase {
             XCTAssertTrue(people.count > 0)
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 5.0)
+        wait(for: [expectation], timeout: 10.0)
     }
     
     func testPerson() {
         let expectation = XCTestExpectation()
-        Person.load(url: Person.endpoint.itemURL(id: 1)) { person, err in
+        Person.fetch(id: 1) { person, err in
             XCTAssertNil(err)
             guard let person = person else {
                 XCTFail()
                 return
             }
+            XCTAssertTrue(person.birthYear.count > 0)
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 5.0)
+        wait(for: [expectation], timeout: 10.0)
     }
 
     static var allTests = [

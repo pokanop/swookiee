@@ -3,7 +3,6 @@ import Foundation
 public protocol Resource: Decodable, Hashable {
     
     static var endpoint: Endpoint { get }
-    static var baseURL: URL { get }
     var id: UUID { get }
     var name: String { get }
     var url: URL { get }
@@ -14,13 +13,20 @@ public protocol Resource: Decodable, Hashable {
 
 public extension Resource {
     
-    static var baseURL: URL { endpoint.baseURL }
     var name: String { Self.endpoint.rawValue }
     var url: URL { Self.endpoint.baseURL }
     var created: Date { Date.distantPast }
     var updated: Date { Date.distantPast }
     
-    static func load(url: URL = baseURL, completion: (([Self]?, Error?) -> ())? = nil) {
+    static func fetch(id: Int, completion: ((Self?, Error?) -> ())? = nil) {
+        fetch(url: endpoint.itemURL(id: id), completion: completion)
+    }
+    
+    static func fetch(completion: (([Self]?, Error?) -> ())? = nil) {
+        fetch(url: endpoint.baseURL, completion: completion)
+    }
+    
+    private static func fetch<T: Decodable>(url: URL, completion: ((T?, Error?) -> ())? = nil) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
                 assertionFailure(error!.localizedDescription)
@@ -32,19 +38,20 @@ public extension Resource {
                 return
             }
             
-            var resources: [Self] = []
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .formatted(.iso8601Full)
             do {
-                if url.isEndpoint && !url.isRootEndpoint {
+                if url.isRootEndpoint {
+                    let resource = try decoder.decode(Self.self, from: data)
+                    completion?([resource] as? T, nil)
+                } else if url.isEndpoint {
                     let page = try decoder.decode(Page<Self>.self, from: data)
-                    resources.append(contentsOf: page.results)
+                    completion?(page.results as? T, nil)
                 } else {
                     let resource = try decoder.decode(Self.self, from: data)
-                    resources.append(resource)
+                    completion?(resource as? T, nil)
                 }
-                completion?(resources, nil)
             } catch let error {
                 assertionFailure(error.localizedDescription)
                 completion?(nil, error)
