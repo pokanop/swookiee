@@ -175,6 +175,30 @@ final class SWookieeTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testSpeciesSingle() {
+        let expectation = XCTestExpectation()
+        Species.fetch(id: 1) { species, err in
+            XCTAssertNil(err)
+            guard let species = species else {
+                XCTFail()
+                return
+            }
+            XCTAssertTrue(species.name.count > 0)
+            XCTAssertTrue(species.classification.count > 0)
+            XCTAssertTrue(species.designation.count > 0)
+            XCTAssertTrue(species.averageHeight.count > 0)
+            XCTAssertTrue(species.averageLifespan.count > 0)
+            XCTAssertTrue(species.eyeColors.count > 0)
+            XCTAssertTrue(species.hairColors.count > 0)
+            XCTAssertTrue(species.skinColors.count > 0)
+            XCTAssertTrue(species.language.count > 0)
+            XCTAssertTrue(species.people.count > 0)
+            XCTAssertTrue(species.films.count > 0)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
 
     static var allTests = [
         ("testRoot", testRoot),
