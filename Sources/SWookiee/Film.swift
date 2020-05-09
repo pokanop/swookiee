@@ -2,22 +2,22 @@ import Foundation
 
 public struct Film: Resource {
     
-    public static var endpoint: Endpoint = .films
-    public var id: UUID = UUID()
-    public var name: String
-    public var url: URL
-    public var created: Date
-    public var updated: Date
-    public var episode: Int
-    public var openingCrawl: String
-    public var director: String
-    public var producer: String
-    public var releaseDate: Date
-    public var species: [URL]
-    public var starships: [URL]
-    public var vehicles: [URL]
-    public var characters: [URL]
-    public var planets: [URL]
+    public static let endpoint: Endpoint = .films
+    public let id: UUID = UUID()
+    public let name: String
+    public let url: URL
+    public let created: Date
+    public let updated: Date
+    public let episode: Int
+    public let openingCrawl: String
+    public let director: String
+    public let producer: String
+    public let releaseDate: Date
+    public let species: [URL]
+    public let starships: [URL]
+    public let vehicles: [URL]
+    public let characters: [URL]
+    public let planets: [URL]
     
     enum CodingKeys: String, CodingKey {
         case url, created, openingCrawl, director, producer, releaseDate, species, starships, vehicles, characters, planets
