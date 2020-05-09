@@ -199,6 +199,34 @@ final class SWookieeTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testStarship() {
+        let expectation = XCTestExpectation()
+        Starship.fetch(id: 10) { starship, err in
+            XCTAssertNil(err)
+            guard let starship = starship else {
+                XCTFail()
+                return
+            }
+            XCTAssertTrue(starship.name.count > 0)
+            XCTAssertTrue(starship.model.count > 0)
+            XCTAssertTrue(starship.starshipClass.count > 0)
+            XCTAssertTrue(starship.manufacturer.count > 0)
+            XCTAssertTrue(starship.costInCredits.count > 0)
+            XCTAssertTrue(starship.length.count > 0)
+            XCTAssertTrue(starship.crew.count > 0)
+            XCTAssertTrue(starship.passengers.count > 0)
+            XCTAssertTrue(starship.maxAtmospheringSpeed.count > 0)
+            XCTAssertTrue(starship.hyperdriveRating.count > 0)
+            XCTAssertTrue(starship.mglt.count > 0)
+            XCTAssertTrue(starship.cargoCapacity.count > 0)
+            XCTAssertTrue(starship.consumables.count > 0)
+            XCTAssertTrue(starship.films.count > 0)
+            XCTAssertTrue(starship.pilots.count > 0)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
 
     static var allTests = [
         ("testRoot", testRoot),
