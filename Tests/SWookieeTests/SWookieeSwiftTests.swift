@@ -105,6 +105,29 @@ final class SWookieeTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
+    func testFilm() {
+        let expectation = XCTestExpectation()
+        Film.fetch(id: 1) { film, err in
+            XCTAssertNil(err)
+            guard let film = film else {
+                XCTFail()
+                return
+            }
+            XCTAssertTrue(film.name.count > 0)
+            XCTAssertTrue(film.episode > 0)
+            XCTAssertTrue(film.openingCrawl.count > 0)
+            XCTAssertTrue(film.director.count > 0)
+            XCTAssertTrue(film.producer.count > 0)
+            XCTAssertTrue(film.species.count > 0)
+            XCTAssertTrue(film.starships.count > 0)
+            XCTAssertTrue(film.vehicles.count > 0)
+            XCTAssertTrue(film.characters.count > 0)
+            XCTAssertTrue(film.planets.count > 0)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
     func testPerson() {
         let expectation = XCTestExpectation()
         Person.fetch(id: 1) { person, err in

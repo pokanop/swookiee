@@ -8,7 +8,6 @@ public struct Person: Resource {
     public var url: URL
     public var created: Date
     public var updated: Date
-    
     public var birthYear: String
     public var eyeColor: String
     public var gender: String
