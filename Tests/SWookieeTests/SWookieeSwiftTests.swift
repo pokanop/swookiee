@@ -227,6 +227,32 @@ final class SWookieeTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testVehicle() {
+        let expectation = XCTestExpectation()
+        Vehicle.fetch(id: 14) { vehicle, err in
+            XCTAssertNil(err)
+            guard let vehicle = vehicle else {
+                XCTFail()
+                return
+            }
+            XCTAssertTrue(vehicle.name.count > 0)
+            XCTAssertTrue(vehicle.model.count > 0)
+            XCTAssertTrue(vehicle.vehicleClass.count > 0)
+            XCTAssertTrue(vehicle.manufacturer.count > 0)
+            XCTAssertTrue(vehicle.length.count > 0)
+            XCTAssertTrue(vehicle.costInCredits.count > 0)
+            XCTAssertTrue(vehicle.crew.count > 0)
+            XCTAssertTrue(vehicle.passengers.count > 0)
+            XCTAssertTrue(vehicle.maxAtmospheringSpeed.count > 0)
+            XCTAssertTrue(vehicle.cargoCapacity.count > 0)
+            XCTAssertTrue(vehicle.consumables.count > 0)
+            XCTAssertTrue(vehicle.films.count > 0)
+            XCTAssertTrue(vehicle.pilots.count > 0)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
 
     static var allTests = [
         ("testRoot", testRoot),
