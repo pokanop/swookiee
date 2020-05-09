@@ -9,6 +9,15 @@
           "revision": "6c5a6521b1dd584cd3c092b43580f040614d5243",
           "version": "0.8.0"
         }
+      },
+      {
+        "package": "SWookiee",
+        "repositoryURL": "git@github.com:pokanop/swookiee.git",
+        "state": {
+          "branch": null,
+          "revision": "cb2877244197a88335913fd67d37468bc0014eb7",
+          "version": "0.1.0"
+        }
       }
     ]
   },
