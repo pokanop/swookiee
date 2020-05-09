@@ -26,7 +26,7 @@ public extension Resource {
         fetch(url: endpoint.baseURL, completion: completion)
     }
     
-    private static func fetch<T: Decodable>(url: URL, completion: ((T?, Error?) -> ())? = nil) {
+    static func fetch<T: Decodable>(url: URL, completion: ((T?, Error?) -> ())? = nil) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
                 assertionFailure(error!.localizedDescription)
@@ -42,10 +42,7 @@ public extension Resource {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .formatted(.iso8601Full)
             do {
-                if url.isRootEndpoint {
-                    let resource = try decoder.decode(Self.self, from: data)
-                    completion?([resource] as? T, nil)
-                } else if url.isEndpoint {
+                if url.isEndpoint && !url.isRootEndpoint {
                     let page = try decoder.decode(Page<Self>.self, from: data)
                     completion?(page.results as? T, nil)
                 } else {

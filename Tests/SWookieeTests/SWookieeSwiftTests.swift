@@ -6,7 +6,7 @@ final class SWookieeTests: XCTestCase {
         let expectation = XCTestExpectation()
         Root.fetch { root, err in
             XCTAssertNil(err)
-            guard let root = root?[0] else {
+            guard let root = root else {
                 XCTFail()
                 return
             }
