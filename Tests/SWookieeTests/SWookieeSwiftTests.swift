@@ -1,7 +1,7 @@
 import XCTest
-@testable import SWookie
+@testable import SWookiee
 
-final class SWookieTests: XCTestCase {
+final class SWookieeTests: XCTestCase {
     func testRoot() {
         let expectation = XCTestExpectation()
         Root.load { root, err in

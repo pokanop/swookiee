@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Boing",
+        "repositoryURL": "git@github.com:pokanop/boing.git",
+        "state": {
+          "branch": null,
+          "revision": "6c5a6521b1dd584cd3c092b43580f040614d5243",
+          "version": "0.8.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
