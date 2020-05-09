@@ -151,6 +151,30 @@ final class SWookieeTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testPlanet() {
+        let expectation = XCTestExpectation()
+        Planet.fetch(id: 1) { planet, err in
+            XCTAssertNil(err)
+            guard let planet = planet else {
+                XCTFail()
+                return
+            }
+            XCTAssertTrue(planet.name.count > 0)
+            XCTAssertTrue(planet.diameter.count > 0)
+            XCTAssertTrue(planet.rotationPeriod.count > 0)
+            XCTAssertTrue(planet.orbitalPeriod.count > 0)
+            XCTAssertTrue(planet.gravity.count > 0)
+            XCTAssertTrue(planet.population.count > 0)
+            XCTAssertTrue(planet.climate.count > 0)
+            XCTAssertTrue(planet.terrain.count > 0)
+            XCTAssertTrue(planet.surfaceWater.count > 0)
+            XCTAssertTrue(planet.residents.count > 0)
+            XCTAssertTrue(planet.films.count > 0)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
 
     static var allTests = [
         ("testRoot", testRoot),
