@@ -10,7 +10,8 @@ public struct Film: Resource {
     public var updated: Date
     
     enum CodingKeys: String, CodingKey {
-        case name, url, created
+        case url, created
+        case name = "title"
         case updated = "edited"
     }
 }

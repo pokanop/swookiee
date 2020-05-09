@@ -40,7 +40,7 @@ public extension Resource {
             
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .formatted(.iso8601Full)
+            decoder.dateDecodingStrategy = .custom(DateFormatter.dateDecoder)
             do {
                 if url.isEndpoint && !url.isRootEndpoint {
                     let page = try decoder.decode(Page<Self>.self, from: data)
@@ -59,12 +59,28 @@ public extension Resource {
 }
 
 extension DateFormatter {
-  static let iso8601Full: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-    formatter.calendar = Calendar(identifier: .iso8601)
-    formatter.timeZone = TimeZone(secondsFromGMT: 0)
-    formatter.locale = Locale(identifier: "en_US_POSIX")
-    return formatter
-  }()
+    
+    static let dateDecoder: (Decoder) throws -> Date = { decoder in
+        // Unfortunately Swift date formatting doesn't handle all variants of ISO8601
+        // and we need to provide a custom date decoding strategy.
+        // See this for details: https://forums.swift.org/t/iso8601dateformatter-fails-to-parse-a-valid-iso-8601-date/22999/8
+        let container = try decoder.singleValueContainer()
+        let dateString = try container.decode(String.self)
+        
+        // Attempt with and without fractional seconds
+        if #available(OSX 10.13, *) {
+            let formatter = ISO8601DateFormatter()
+            if let date = formatter.date(from: dateString) {
+                return date
+            }
+            
+            formatter.formatOptions = [.withFractionalSeconds]
+            if let date = formatter.date(from: dateString) {
+                return date
+            }
+        }
+        
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "Date string does not match expected format.")
+    }
+    
 }
