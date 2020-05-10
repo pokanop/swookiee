@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SWookiee/SWookiee.xcodeproj">
+      location = "group:/Users/saheljalal/code/sandbox/swookiee/Demo/SWookiee App.xcodeproj">
    </FileRef>
 </Workspace>

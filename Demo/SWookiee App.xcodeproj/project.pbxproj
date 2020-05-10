@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		97FF6F4824677CB700B9FB56 /* SWookiee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWookiee.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97FF6F4824677CB700B9FB56 /* SWookiee App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWookiee App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97FF6F4B24677CB700B9FB56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97FF6F4D24677CB700B9FB56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		97FF6F4F24677CB700B9FB56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +42,7 @@
 		97FF6F3F24677CB700B9FB56 = {
 			isa = PBXGroup;
 			children = (
-				97FF6F4A24677CB700B9FB56 /* SWookiee */,
+				97FF6F4A24677CB700B9FB56 /* SWookiee App */,
 				97FF6F4924677CB700B9FB56 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,12 +50,12 @@
 		97FF6F4924677CB700B9FB56 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				97FF6F4824677CB700B9FB56 /* SWookiee.app */,
+				97FF6F4824677CB700B9FB56 /* SWookiee App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		97FF6F4A24677CB700B9FB56 /* SWookiee */ = {
+		97FF6F4A24677CB700B9FB56 /* SWookiee App */ = {
 			isa = PBXGroup;
 			children = (
 				97FF6F4B24677CB700B9FB56 /* AppDelegate.swift */,
@@ -66,15 +66,15 @@
 				97FF6F5624677CB700B9FB56 /* LaunchScreen.storyboard */,
 				97FF6F5924677CB700B9FB56 /* Info.plist */,
 			);
-			path = SWookiee;
+			path = "SWookiee App";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		97FF6F4724677CB700B9FB56 /* SWookiee */ = {
+		97FF6F4724677CB700B9FB56 /* SWookiee App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 97FF6F5C24677CB700B9FB56 /* Build configuration list for PBXNativeTarget "SWookiee" */;
+			buildConfigurationList = 97FF6F5C24677CB700B9FB56 /* Build configuration list for PBXNativeTarget "SWookiee App" */;
 			buildPhases = (
 				97FF6F4424677CB700B9FB56 /* Sources */,
 				97FF6F4524677CB700B9FB56 /* Frameworks */,
@@ -84,12 +84,12 @@
 			);
 			dependencies = (
 			);
-			name = SWookiee;
+			name = "SWookiee App";
 			packageProductDependencies = (
 				97FF6F6024677CD800B9FB56 /* Boing */,
 			);
 			productName = SWookiee;
-			productReference = 97FF6F4824677CB700B9FB56 /* SWookiee.app */;
+			productReference = 97FF6F4824677CB700B9FB56 /* SWookiee App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -107,7 +107,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 97FF6F4324677CB700B9FB56 /* Build configuration list for PBXProject "SWookiee" */;
+			buildConfigurationList = 97FF6F4324677CB700B9FB56 /* Build configuration list for PBXProject "SWookiee App" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -123,7 +123,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				97FF6F4724677CB700B9FB56 /* SWookiee */,
+				97FF6F4724677CB700B9FB56 /* SWookiee App */,
 			);
 		};
 /* End PBXProject section */
@@ -294,7 +294,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JWN29MLAZ7;
-				INFOPLIST_FILE = SWookiee/Info.plist;
+				INFOPLIST_FILE = "SWookiee App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JWN29MLAZ7;
-				INFOPLIST_FILE = SWookiee/Info.plist;
+				INFOPLIST_FILE = "SWookiee App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -327,7 +327,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		97FF6F4324677CB700B9FB56 /* Build configuration list for PBXProject "SWookiee" */ = {
+		97FF6F4324677CB700B9FB56 /* Build configuration list for PBXProject "SWookiee App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				97FF6F5A24677CB700B9FB56 /* Debug */,
@@ -336,7 +336,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		97FF6F5C24677CB700B9FB56 /* Build configuration list for PBXNativeTarget "SWookiee" */ = {
+		97FF6F5C24677CB700B9FB56 /* Build configuration list for PBXNativeTarget "SWookiee App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				97FF6F5D24677CB700B9FB56 /* Debug */,
