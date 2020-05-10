@@ -7,66 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9772C8D5246748110009819A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9772C8D4246748110009819A /* AppDelegate.swift */; };
-		9772C8D7246748110009819A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9772C8D6246748110009819A /* SceneDelegate.swift */; };
-		9772C8D9246748110009819A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9772C8D8246748110009819A /* ViewController.swift */; };
-		9772C8DC246748110009819A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9772C8DA246748110009819A /* Main.storyboard */; };
-		9772C8DE246748120009819A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9772C8DD246748120009819A /* Assets.xcassets */; };
-		9772C8E1246748120009819A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9772C8DF246748120009819A /* LaunchScreen.storyboard */; };
-		9772C8EA246748570009819A /* Boing in Frameworks */ = {isa = PBXBuildFile; productRef = 9772C8E9246748570009819A /* Boing */; };
-		97C6F6E1246750DA00B15562 /* SWookiee in Frameworks */ = {isa = PBXBuildFile; productRef = 97C6F6E0246750DA00B15562 /* SWookiee */; };
+		97FF6F4C24677CB700B9FB56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF6F4B24677CB700B9FB56 /* AppDelegate.swift */; };
+		97FF6F4E24677CB700B9FB56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF6F4D24677CB700B9FB56 /* SceneDelegate.swift */; };
+		97FF6F5024677CB700B9FB56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF6F4F24677CB700B9FB56 /* ViewController.swift */; };
+		97FF6F5324677CB700B9FB56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97FF6F5124677CB700B9FB56 /* Main.storyboard */; };
+		97FF6F5524677CB700B9FB56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97FF6F5424677CB700B9FB56 /* Assets.xcassets */; };
+		97FF6F5824677CB700B9FB56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97FF6F5624677CB700B9FB56 /* LaunchScreen.storyboard */; };
+		97FF6F6124677CD800B9FB56 /* Boing in Frameworks */ = {isa = PBXBuildFile; productRef = 97FF6F6024677CD800B9FB56 /* Boing */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9772C8D1246748110009819A /* SWookiee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWookiee.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9772C8D4246748110009819A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9772C8D6246748110009819A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9772C8D8246748110009819A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9772C8DB246748110009819A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9772C8DD246748120009819A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9772C8E0246748120009819A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9772C8E2246748120009819A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97FF6F4824677CB700B9FB56 /* SWookiee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWookiee.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97FF6F4B24677CB700B9FB56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		97FF6F4D24677CB700B9FB56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		97FF6F4F24677CB700B9FB56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		97FF6F5224677CB700B9FB56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		97FF6F5424677CB700B9FB56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		97FF6F5724677CB700B9FB56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		97FF6F5924677CB700B9FB56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9772C8CE246748110009819A /* Frameworks */ = {
+		97FF6F4524677CB700B9FB56 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97C6F6E1246750DA00B15562 /* SWookiee in Frameworks */,
-				9772C8EA246748570009819A /* Boing in Frameworks */,
+				97FF6F6124677CD800B9FB56 /* Boing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9772C8C8246748110009819A = {
+		97FF6F3F24677CB700B9FB56 = {
 			isa = PBXGroup;
 			children = (
-				9772C8D3246748110009819A /* SWookiee */,
-				9772C8D2246748110009819A /* Products */,
+				97FF6F4A24677CB700B9FB56 /* SWookiee */,
+				97FF6F4924677CB700B9FB56 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9772C8D2246748110009819A /* Products */ = {
+		97FF6F4924677CB700B9FB56 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9772C8D1246748110009819A /* SWookiee.app */,
+				97FF6F4824677CB700B9FB56 /* SWookiee.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9772C8D3246748110009819A /* SWookiee */ = {
+		97FF6F4A24677CB700B9FB56 /* SWookiee */ = {
 			isa = PBXGroup;
 			children = (
-				9772C8D4246748110009819A /* AppDelegate.swift */,
-				9772C8D6246748110009819A /* SceneDelegate.swift */,
-				9772C8D8246748110009819A /* ViewController.swift */,
-				9772C8DA246748110009819A /* Main.storyboard */,
-				9772C8DD246748120009819A /* Assets.xcassets */,
-				9772C8DF246748120009819A /* LaunchScreen.storyboard */,
-				9772C8E2246748120009819A /* Info.plist */,
+				97FF6F4B24677CB700B9FB56 /* AppDelegate.swift */,
+				97FF6F4D24677CB700B9FB56 /* SceneDelegate.swift */,
+				97FF6F4F24677CB700B9FB56 /* ViewController.swift */,
+				97FF6F5124677CB700B9FB56 /* Main.storyboard */,
+				97FF6F5424677CB700B9FB56 /* Assets.xcassets */,
+				97FF6F5624677CB700B9FB56 /* LaunchScreen.storyboard */,
+				97FF6F5924677CB700B9FB56 /* Info.plist */,
 			);
 			path = SWookiee;
 			sourceTree = "<group>";
@@ -74,13 +72,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9772C8D0246748110009819A /* SWookiee */ = {
+		97FF6F4724677CB700B9FB56 /* SWookiee */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9772C8E5246748120009819A /* Build configuration list for PBXNativeTarget "SWookiee" */;
+			buildConfigurationList = 97FF6F5C24677CB700B9FB56 /* Build configuration list for PBXNativeTarget "SWookiee" */;
 			buildPhases = (
-				9772C8CD246748110009819A /* Sources */,
-				9772C8CE246748110009819A /* Frameworks */,
-				9772C8CF246748110009819A /* Resources */,
+				97FF6F4424677CB700B9FB56 /* Sources */,
+				97FF6F4524677CB700B9FB56 /* Frameworks */,
+				97FF6F4624677CB700B9FB56 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -88,29 +86,28 @@
 			);
 			name = SWookiee;
 			packageProductDependencies = (
-				9772C8E9246748570009819A /* Boing */,
-				97C6F6E0246750DA00B15562 /* SWookiee */,
+				97FF6F6024677CD800B9FB56 /* Boing */,
 			);
-			productName = SWookie;
-			productReference = 9772C8D1246748110009819A /* SWookiee.app */;
+			productName = SWookiee;
+			productReference = 97FF6F4824677CB700B9FB56 /* SWookiee.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9772C8C9246748110009819A /* Project object */ = {
+		97FF6F4024677CB700B9FB56 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Pokanop Apps LLC";
 				TargetAttributes = {
-					9772C8D0246748110009819A = {
+					97FF6F4724677CB700B9FB56 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
 				};
 			};
-			buildConfigurationList = 9772C8CC246748110009819A /* Build configuration list for PBXProject "SWookiee Demo" */;
+			buildConfigurationList = 97FF6F4324677CB700B9FB56 /* Build configuration list for PBXProject "SWookiee" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,59 +115,58 @@
 				en,
 				Base,
 			);
-			mainGroup = 9772C8C8246748110009819A;
+			mainGroup = 97FF6F3F24677CB700B9FB56;
 			packageReferences = (
-				9772C8E8246748570009819A /* XCRemoteSwiftPackageReference "boing" */,
-				97C6F6DF246750DA00B15562 /* XCRemoteSwiftPackageReference "swookiee" */,
+				97FF6F5F24677CD800B9FB56 /* XCRemoteSwiftPackageReference "boing" */,
 			);
-			productRefGroup = 9772C8D2246748110009819A /* Products */;
+			productRefGroup = 97FF6F4924677CB700B9FB56 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9772C8D0246748110009819A /* SWookiee */,
+				97FF6F4724677CB700B9FB56 /* SWookiee */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9772C8CF246748110009819A /* Resources */ = {
+		97FF6F4624677CB700B9FB56 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9772C8E1246748120009819A /* LaunchScreen.storyboard in Resources */,
-				9772C8DE246748120009819A /* Assets.xcassets in Resources */,
-				9772C8DC246748110009819A /* Main.storyboard in Resources */,
+				97FF6F5824677CB700B9FB56 /* LaunchScreen.storyboard in Resources */,
+				97FF6F5524677CB700B9FB56 /* Assets.xcassets in Resources */,
+				97FF6F5324677CB700B9FB56 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9772C8CD246748110009819A /* Sources */ = {
+		97FF6F4424677CB700B9FB56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9772C8D9246748110009819A /* ViewController.swift in Sources */,
-				9772C8D5246748110009819A /* AppDelegate.swift in Sources */,
-				9772C8D7246748110009819A /* SceneDelegate.swift in Sources */,
+				97FF6F5024677CB700B9FB56 /* ViewController.swift in Sources */,
+				97FF6F4C24677CB700B9FB56 /* AppDelegate.swift in Sources */,
+				97FF6F4E24677CB700B9FB56 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9772C8DA246748110009819A /* Main.storyboard */ = {
+		97FF6F5124677CB700B9FB56 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9772C8DB246748110009819A /* Base */,
+				97FF6F5224677CB700B9FB56 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		9772C8DF246748120009819A /* LaunchScreen.storyboard */ = {
+		97FF6F5624677CB700B9FB56 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9772C8E0246748120009819A /* Base */,
+				97FF6F5724677CB700B9FB56 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -178,7 +174,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		9772C8E3246748120009819A /* Debug */ = {
+		97FF6F5A24677CB700B9FB56 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -238,7 +234,7 @@
 			};
 			name = Debug;
 		};
-		9772C8E4246748120009819A /* Release */ = {
+		97FF6F5B24677CB700B9FB56 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -292,36 +288,36 @@
 			};
 			name = Release;
 		};
-		9772C8E6246748120009819A /* Debug */ = {
+		97FF6F5D24677CB700B9FB56 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JWN29MLAZ7;
-				INFOPLIST_FILE = SWookie/Info.plist;
+				INFOPLIST_FILE = SWookiee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pokanop.SWookie;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pokanop.SWookiee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		9772C8E7246748120009819A /* Release */ = {
+		97FF6F5E24677CB700B9FB56 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JWN29MLAZ7;
-				INFOPLIST_FILE = SWookie/Info.plist;
+				INFOPLIST_FILE = SWookiee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pokanop.SWookie;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pokanop.SWookiee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -331,20 +327,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9772C8CC246748110009819A /* Build configuration list for PBXProject "SWookiee Demo" */ = {
+		97FF6F4324677CB700B9FB56 /* Build configuration list for PBXProject "SWookiee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9772C8E3246748120009819A /* Debug */,
-				9772C8E4246748120009819A /* Release */,
+				97FF6F5A24677CB700B9FB56 /* Debug */,
+				97FF6F5B24677CB700B9FB56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9772C8E5246748120009819A /* Build configuration list for PBXNativeTarget "SWookiee" */ = {
+		97FF6F5C24677CB700B9FB56 /* Build configuration list for PBXNativeTarget "SWookiee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9772C8E6246748120009819A /* Debug */,
-				9772C8E7246748120009819A /* Release */,
+				97FF6F5D24677CB700B9FB56 /* Debug */,
+				97FF6F5E24677CB700B9FB56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -352,7 +348,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9772C8E8246748570009819A /* XCRemoteSwiftPackageReference "boing" */ = {
+		97FF6F5F24677CD800B9FB56 /* XCRemoteSwiftPackageReference "boing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:pokanop/boing.git";
 			requirement = {
@@ -360,28 +356,15 @@
 				minimumVersion = 0.8.0;
 			};
 		};
-		97C6F6DF246750DA00B15562 /* XCRemoteSwiftPackageReference "swookiee" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:pokanop/swookiee.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9772C8E9246748570009819A /* Boing */ = {
+		97FF6F6024677CD800B9FB56 /* Boing */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9772C8E8246748570009819A /* XCRemoteSwiftPackageReference "boing" */;
+			package = 97FF6F5F24677CD800B9FB56 /* XCRemoteSwiftPackageReference "boing" */;
 			productName = Boing;
-		};
-		97C6F6E0246750DA00B15562 /* SWookiee */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 97C6F6DF246750DA00B15562 /* XCRemoteSwiftPackageReference "swookiee" */;
-			productName = SWookiee;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 9772C8C9246748110009819A /* Project object */;
+	rootObject = 97FF6F4024677CB700B9FB56 /* Project object */;
 }
