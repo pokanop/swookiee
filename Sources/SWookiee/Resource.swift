@@ -67,7 +67,7 @@ extension DateFormatter {
         let container = try decoder.singleValueContainer()
         let dateString = try container.decode(String.self)
         
-        if #available(OSX 10.13, *) {
+        if #available(OSX 10.13, *), #available(iOS 11.0, *) {
             let formatter = ISO8601DateFormatter()
             formatter.formatOptions = [.withFractionalSeconds]
             if let date = formatter.date(from: dateString) {
