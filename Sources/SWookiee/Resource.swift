@@ -48,9 +48,9 @@ public extension Resource {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .custom(DateFormatter.dateDecoder)
             do {
-                if url.isEndpoint && !url.isRootEndpoint {
+                if url.isPagedResults {
                     let page = try decoder.decode(Page<Self>.self, from: data)
-                    Cache.shared.set(page.results, for: url)
+                    page.results.forEach{ Cache.shared.set($0, for: $0.url) }
                     completion?(page.results as? T, nil)
                 } else {
                     let resource = try decoder.decode(Self.self, from: data)

@@ -20,16 +20,47 @@ public enum Endpoint: String, CaseIterable {
         return baseURL.appendingPathComponent("\(id)/")
     }
     
+    func pageURL(page: Int) -> URL {
+        assert(self != .root)
+        return baseURL.appendingPathComponent("?page=\(page)")
+    }
+    
+    func searchURL(search: String) -> URL {
+        assert(self != .root)
+        return baseURL.appendingPathComponent("?search=\(search)")
+    }
+    
 }
 
 extension URL {
     
-    var isEndpoint: Bool {
-        return Endpoint.allCases.filter { $0.baseURL == self }.count > 0
+    enum EndpointStyle {
+        case none, root, resource, item, page, search
     }
     
-    var isRootEndpoint: Bool {
-        return self == Endpoint.root.baseURL
+    var endpoint: Endpoint? {
+        guard Endpoint.root.baseURL != self else { return .root }
+        return Endpoint.allCases.filter { $0 != .root }.first { self.absoluteString.contains($0.baseURL.absoluteString) }
+    }
+    
+    var endpointStyle: EndpointStyle {
+        guard let endpoint = endpoint else { return .none }
+        switch endpoint {
+        case .root: return .root
+        default:
+            if absoluteString.contains("?page=") { return .page }
+            if absoluteString.contains("?search=") { return .search }
+            if absoluteString == endpoint.baseURL.absoluteString { return .resource }
+            if Int(lastPathComponent) != nil { return .item }
+            return .none
+        }
+    }
+    
+    var isPagedResults: Bool {
+        switch endpointStyle {
+        case .resource, .page, .search: return true
+        default: return false
+        }
     }
     
 }
