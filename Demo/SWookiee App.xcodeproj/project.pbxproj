@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		977EBBA72467D7AE009F1A93 /* SWookiee in Frameworks */ = {isa = PBXBuildFile; productRef = 977EBBA62467D7AE009F1A93 /* SWookiee */; };
 		97FF6F4C24677CB700B9FB56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF6F4B24677CB700B9FB56 /* AppDelegate.swift */; };
 		97FF6F4E24677CB700B9FB56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF6F4D24677CB700B9FB56 /* SceneDelegate.swift */; };
 		97FF6F5024677CB700B9FB56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF6F4F24677CB700B9FB56 /* ViewController.swift */; };
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				977EBBA72467D7AE009F1A93 /* SWookiee in Frameworks */,
 				97FF6F6124677CD800B9FB56 /* Boing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +103,7 @@
 			name = "SWookiee App";
 			packageProductDependencies = (
 				97FF6F6024677CD800B9FB56 /* Boing */,
+				977EBBA62467D7AE009F1A93 /* SWookiee */,
 			);
 			productName = SWookiee;
 			productReference = 97FF6F4824677CB700B9FB56 /* SWookiee App.app */;
@@ -132,6 +135,7 @@
 			mainGroup = 97FF6F3F24677CB700B9FB56;
 			packageReferences = (
 				97FF6F5F24677CD800B9FB56 /* XCRemoteSwiftPackageReference "boing" */,
+				977EBBA52467D7AE009F1A93 /* XCRemoteSwiftPackageReference "swookiee" */,
 			);
 			productRefGroup = 97FF6F4924677CB700B9FB56 /* Products */;
 			projectDirPath = "";
@@ -364,6 +368,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		977EBBA52467D7AE009F1A93 /* XCRemoteSwiftPackageReference "swookiee" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:pokanop/swookiee.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.4;
+			};
+		};
 		97FF6F5F24677CD800B9FB56 /* XCRemoteSwiftPackageReference "boing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:pokanop/boing.git";
@@ -375,6 +387,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		977EBBA62467D7AE009F1A93 /* SWookiee */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 977EBBA52467D7AE009F1A93 /* XCRemoteSwiftPackageReference "swookiee" */;
+			productName = SWookiee;
+		};
 		97FF6F6024677CD800B9FB56 /* Boing */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 97FF6F5F24677CD800B9FB56 /* XCRemoteSwiftPackageReference "boing" */;
