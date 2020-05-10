@@ -27,6 +27,12 @@ public extension Resource {
     }
     
     static func fetch<T: Decodable>(url: URL, completion: ((T?, Error?) -> ())? = nil) {
+        let result: T? = Cache.shared.get(url)
+        if result != nil {
+            completion?(result, nil)
+            return
+        }
+        
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
                 assertionFailure(error!.localizedDescription)
@@ -44,9 +50,11 @@ public extension Resource {
             do {
                 if url.isEndpoint && !url.isRootEndpoint {
                     let page = try decoder.decode(Page<Self>.self, from: data)
+                    Cache.shared.set(page.results, for: url)
                     completion?(page.results as? T, nil)
                 } else {
                     let resource = try decoder.decode(Self.self, from: data)
+                    Cache.shared.set(resource, for: url)
                     completion?(resource as? T, nil)
                 }
             } catch let error {
