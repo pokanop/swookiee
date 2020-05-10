@@ -256,7 +256,17 @@ final class SWookieeTests: XCTestCase {
 
     static var allTests = [
         ("testRoot", testRoot),
+        ("testFilms", testFilms),
         ("testPeople", testPeople),
+        ("testPlanets", testPlanets),
+        ("testSpecies", testSpecies),
+        ("testStarships", testStarships),
+        ("testVehicles", testVehicles),
+        ("testFilm", testFilm),
         ("testPerson", testPerson),
+        ("testPlanet", testPlanet),
+        ("testSpeciesSingle", testSpeciesSingle),
+        ("testStarship", testStarship),
+        ("testVehicle", testVehicle),
     ]
 }

@@ -118,8 +118,11 @@ fastlane/test_output
 iOSInjectionProject/
 
 ### SwiftPM ###
-Packages
-xcuserdata
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+xcuserdata/
 
 
 ### Xcode ###
