@@ -2,6 +2,7 @@ import XCTest
 @testable import SWookiee
 
 final class SWookieeTests: XCTestCase {
+    
     func testRoot() {
         let expectation = XCTestExpectation()
         Root.fetch { root, err in
@@ -253,6 +254,28 @@ final class SWookieeTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testCache() {
+        let expectation = XCTestExpectation()
+        Person.fetch(id: 1) { person, err in
+            XCTAssertNil(err)
+            guard let person = person else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(person, Cache.shared.get(Person.endpoint.itemURL(id: 1)))
+            expectation.fulfill()
+        }
+        Film.fetch { films, err in
+            XCTAssertNil(err)
+            guard let films = films else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(films, Cache.shared.get(Film.endpoint.baseURL))
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
 
     static var allTests = [
         ("testRoot", testRoot),
@@ -269,4 +292,5 @@ final class SWookieeTests: XCTestCase {
         ("testStarship", testStarship),
         ("testVehicle", testVehicle),
     ]
+    
 }

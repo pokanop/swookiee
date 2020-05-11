@@ -4,37 +4,29 @@ public class Cache {
     
     static let shared: Cache = Cache()
     
-    private final class Key<T: Hashable>: NSObject {
-        
-        let key: T
-        
-        init(_ key: T) { self.key = key }
-        
-        override var hash: Int { key.hashValue }
-        
-        override func isEqual(_ object: Any?) -> Bool {
-            guard let key = object as? T else { return false }
-            return self.key == key
-        }
-        
+    private var cache: [URL: AnyResource] = [:]
+    private var urls: [URL: [URL]] = [:]
+    
+    public func set<T: Resource>(_ item: T, for url: URL) {
+        cache[url] = AnyResource(item)
     }
     
-    private final class Value: NSObject {
-        
-        let value: Any
-        
-        init(_ value: Any) { self.value = value }
-        
+    public func get<T: Resource>(_ url: URL) -> T? {
+        return cache[url]?.base as? T
     }
     
-    private let wrapped = NSCache<Key<URL>, Value>()
-    
-    func set<T: Decodable>(_ item: T, for url: URL) {
-        wrapped.setObject(Value(item), forKey: Key(url))
+    public func set<T: Resource>(_ items: [T], for url: URL) {
+        urls[url] = items.map { $0.url }
+        items.forEach { set($0, for: $0.url) }
     }
     
-    func get<T: Decodable>(_ url: URL) -> T? {
-        return wrapped.object(forKey: Key(url))?.value as? T
+    public func get<T: Resource>(_ url: URL) -> [T]? {
+        guard let urls = urls[url] else { return nil }
+        return urls.compactMap { cache[$0]?.base as? T }
+    }
+    
+    public func reset() {
+        cache.removeAll()
     }
     
 }
