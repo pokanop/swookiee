@@ -31,7 +31,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		97D5534B24688401000F4055 /* swookiee */ = {isa = PBXFileReference; lastKnownFileType = folder; name = swookiee; path = ..; sourceTree = "<group>"; };
 		97FF6F4824677CB700B9FB56 /* SWookiee App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWookiee App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97FF6F4B24677CB700B9FB56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97FF6F4D24677CB700B9FB56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +57,6 @@
 		97FF6F3F24677CB700B9FB56 = {
 			isa = PBXGroup;
 			children = (
-				97D5534B24688401000F4055 /* swookiee */,
 				97FF6F4A24677CB700B9FB56 /* SWookiee App */,
 				97FF6F4924677CB700B9FB56 /* Products */,
 			);
