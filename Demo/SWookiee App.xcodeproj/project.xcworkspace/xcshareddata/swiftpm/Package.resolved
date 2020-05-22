@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Boing",
+        "repositoryURL": "git@github.com:pokanop/boing.git",
+        "state": {
+          "branch": null,
+          "revision": "6c5a6521b1dd584cd3c092b43580f040614d5243",
+          "version": "0.8.0"
+        }
+      },
+      {
+        "package": "SWookiee",
+        "repositoryURL": "git@github.com:pokanop/swookiee.git",
+        "state": {
+          "branch": null,
+          "revision": "1d4f9056418389ca1140d5c31ce227f14bc5bfc9",
+          "version": "0.2.5"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
