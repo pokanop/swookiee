@@ -28,19 +28,19 @@ public extension Resource {
     var created: Date { Date.distantPast }
     var updated: Date { Date.distantPast }
     
-    static func fetch(id: Int, completion: ((Self?, Error?) -> ())? = nil) {
+    static func fetch(id: Int, completion: ((Result<Self, Error>) -> ())? = nil) {
         fetch(url: endpoint.itemURL(id: id), completion: completion)
     }
     
-    static func fetch(page: Int, completion: (([Self]?, Error?) -> ())? = nil) {
+    static func fetch(page: Int, completion: ((Result<[Self], Error>) -> ())? = nil) {
         fetch(url: endpoint.pageURL(page: page), completion: completion)
     }
     
-    static func fetch(search: String, completion: (([Self]?, Error?) -> ())? = nil) {
+    static func fetch(search: String, completion: ((Result<[Self], Error>) -> ())? = nil) {
         fetch(url: endpoint.searchURL(search: search), completion: completion)
     }
     
-    static func fetch(completion: (([Self]?, Error?) -> ())? = nil) {
+    static func fetch(completion: ((Result<[Self], Error>) -> ())? = nil) {
         fetch(url: endpoint.baseURL, completion: completion)
     }
     
@@ -48,17 +48,17 @@ public extension Resource {
 
 extension Resource {
     
-    static func fetch<T: Resource>(url: URL, completion: ((T?, Error?) -> ())? = nil) {
+    static func fetch<T: Resource>(url: URL, completion: ((Result<T, Error>) -> ())? = nil) {
         if let resource: T = Cache.shared.get(url) {
-            completion?(resource, nil)
+            completion?(.success(resource))
             return
         }
         
-        let innerCompletion: (T?, Error?) -> () = { resource, error in
-            if let resource = resource {
+        let innerCompletion: (Result<T, Error>) -> () = { result in
+            if case .success(let resource) = result {
                 Cache.shared.set(resource, for: url)
             }
-            completion?(resource, error)
+            completion?(result)
         }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -76,18 +76,19 @@ extension Resource {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .custom(DateFormatter.dateDecoder)
             do {
-                let resource = try decoder.decode(Self.self, from: data)
-                innerCompletion(resource as? T, nil)
+                if let resource = try decoder.decode(Self.self, from: data) as? T {
+                    innerCompletion(.success(resource))
+                }
             } catch let error {
                 assertionFailure(error.localizedDescription)
-                innerCompletion(nil, error)
+                innerCompletion(.failure(error))
             }
         }.resume()
     }
     
-    static func fetch<T: Resource>(url: URL, group: DispatchGroup? = nil, completion: (([T]?, Error?) -> ())? = nil) {
+    static func fetch<T: Resource>(url: URL, group: DispatchGroup? = nil, completion: ((Result<[T], Error>) -> ())? = nil) {
         if let resources: [T] = Cache.shared.get(url) {
-            completion?(resources, nil)
+            completion?(.success(resources))
             return
         }
             
@@ -95,7 +96,7 @@ extension Resource {
         let group: DispatchGroup = group ?? DispatchGroup()
         group.enter()
         
-        var result: [T] = []
+        var outerResult: [T] = []
         var outerError: Error?
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -115,16 +116,16 @@ extension Resource {
             do {
                 let page = try decoder.decode(Page<Self>.self, from: data)
                 if let next = page.next {
-                    let innerCompletion: ([T]?, Error?) -> () = { resources, error in
-                        guard let resources = resources else {
+                    let innerCompletion: (Result<[T], Error>) -> () = { result in
+                        guard case .success(let resources) = result else {
                             outerError = error
                             return
                         }
-                        result += resources
+                        outerResult += resources
                     }
                     fetch(url: next, group: group, completion: innerCompletion)
                 }
-                result += page.results as? [T] ?? []
+                outerResult += page.results as? [T] ?? []
             } catch let error {
                 assertionFailure(error.localizedDescription)
                 outerError = error
@@ -136,11 +137,15 @@ extension Resource {
         if firstRequest {
             group.wait()
             
-            if result.count > 0 {
-                Cache.shared.set(result, for: url)
+            if outerResult.count > 0 {
+                Cache.shared.set(outerResult, for: url)
             }
             
-            completion?(result, outerError)
+            if let outerError = outerError {
+                completion?(.failure(outerError))
+            } else {
+                completion?(.success(outerResult))
+            }
         }
     }
     

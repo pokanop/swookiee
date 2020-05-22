@@ -19,7 +19,7 @@ public struct Root: Resource {
 
 public extension Root {
     
-    static func fetch(completion: ((Self?, Error?) -> ())? = nil) {
+    static func fetch(completion: ((Result<Self, Error>) -> ())? = nil) {
         fetch(url: endpoint.baseURL, completion: completion)
     }
     

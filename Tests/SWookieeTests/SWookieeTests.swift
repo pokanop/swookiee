@@ -5,9 +5,8 @@ final class SWookieeTests: XCTestCase {
     
     func testRoot() {
         let expectation = XCTestExpectation()
-        Root.fetch { root, err in
-            XCTAssertNil(err)
-            guard let root = root else {
+        Root.fetch { result in
+            guard case .success(let root) = result else {
                 XCTFail()
                 return
             }
@@ -24,9 +23,8 @@ final class SWookieeTests: XCTestCase {
     
     func testFilms() {
         let expectation = XCTestExpectation()
-        Film.fetch { films, err in
-            XCTAssertNil(err)
-            guard let films = films else {
+        Film.fetch { result in
+            guard case .success(let films) = result else {
                 XCTFail()
                 return
             }
@@ -38,9 +36,8 @@ final class SWookieeTests: XCTestCase {
     
     func testPeople() {
         let expectation = XCTestExpectation()
-        Person.fetch { people, err in
-            XCTAssertNil(err)
-            guard let people = people else {
+        Person.fetch { result in
+            guard case .success(let people) = result else {
                 XCTFail()
                 return
             }
@@ -52,9 +49,8 @@ final class SWookieeTests: XCTestCase {
     
     func testPlanets() {
         let expectation = XCTestExpectation()
-        Planet.fetch { planets, err in
-            XCTAssertNil(err)
-            guard let planets = planets else {
+        Planet.fetch { result in
+            guard case .success(let planets) = result else {
                 XCTFail()
                 return
             }
@@ -66,9 +62,8 @@ final class SWookieeTests: XCTestCase {
     
     func testSpecies() {
         let expectation = XCTestExpectation()
-        Species.fetch { species, err in
-            XCTAssertNil(err)
-            guard let species = species else {
+        Species.fetch { result in
+            guard case .success(let species) = result else {
                 XCTFail()
                 return
             }
@@ -80,9 +75,8 @@ final class SWookieeTests: XCTestCase {
     
     func testStarships() {
         let expectation = XCTestExpectation()
-        Starship.fetch { starships, err in
-            XCTAssertNil(err)
-            guard let starships = starships else {
+        Starship.fetch { result in
+            guard case .success(let starships) = result else {
                 XCTFail()
                 return
             }
@@ -94,9 +88,8 @@ final class SWookieeTests: XCTestCase {
     
     func testVehicles() {
         let expectation = XCTestExpectation()
-        Vehicle.fetch { vehicles, err in
-            XCTAssertNil(err)
-            guard let vehicles = vehicles else {
+        Vehicle.fetch { result in
+            guard case .success(let vehicles) = result else {
                 XCTFail()
                 return
             }
@@ -108,9 +101,8 @@ final class SWookieeTests: XCTestCase {
     
     func testFilm() {
         let expectation = XCTestExpectation()
-        Film.fetch(id: 1) { film, err in
-            XCTAssertNil(err)
-            guard let film = film else {
+        Film.fetch(id: 1) { result in
+            guard case .success(let film) = result else {
                 XCTFail()
                 return
             }
@@ -131,9 +123,8 @@ final class SWookieeTests: XCTestCase {
     
     func testPerson() {
         let expectation = XCTestExpectation()
-        Person.fetch(id: 1) { person, err in
-            XCTAssertNil(err)
-            guard let person = person else {
+        Person.fetch(id: 1) { result in
+            guard case .success(let person) = result else {
                 XCTFail()
                 return
             }
@@ -155,9 +146,8 @@ final class SWookieeTests: XCTestCase {
     
     func testPlanet() {
         let expectation = XCTestExpectation()
-        Planet.fetch(id: 1) { planet, err in
-            XCTAssertNil(err)
-            guard let planet = planet else {
+        Planet.fetch(id: 1) { result in
+            guard case .success(let planet) = result else {
                 XCTFail()
                 return
             }
@@ -179,9 +169,8 @@ final class SWookieeTests: XCTestCase {
     
     func testSpeciesSingle() {
         let expectation = XCTestExpectation()
-        Species.fetch(id: 1) { species, err in
-            XCTAssertNil(err)
-            guard let species = species else {
+        Species.fetch(id: 1) { result in
+            guard case .success(let species) = result else {
                 XCTFail()
                 return
             }
@@ -203,9 +192,8 @@ final class SWookieeTests: XCTestCase {
     
     func testStarship() {
         let expectation = XCTestExpectation()
-        Starship.fetch(id: 10) { starship, err in
-            XCTAssertNil(err)
-            guard let starship = starship else {
+        Starship.fetch(id: 10) { result in
+            guard case .success(let starship) = result else {
                 XCTFail()
                 return
             }
@@ -231,9 +219,8 @@ final class SWookieeTests: XCTestCase {
     
     func testVehicle() {
         let expectation = XCTestExpectation()
-        Vehicle.fetch(id: 14) { vehicle, err in
-            XCTAssertNil(err)
-            guard let vehicle = vehicle else {
+        Vehicle.fetch(id: 14) { result in
+            guard case .success(let vehicle) = result else {
                 XCTFail()
                 return
             }
@@ -257,18 +244,16 @@ final class SWookieeTests: XCTestCase {
     
     func testCache() {
         let expectation = XCTestExpectation()
-        Person.fetch(id: 1) { person, err in
-            XCTAssertNil(err)
-            guard let person = person else {
+        Person.fetch(id: 1) { result in
+            guard case .success(let person) = result else {
                 XCTFail()
                 return
             }
             XCTAssertEqual(person, Cache.shared.get(Person.endpoint.itemURL(id: 1)))
             expectation.fulfill()
         }
-        Film.fetch { films, err in
-            XCTAssertNil(err)
-            guard let films = films else {
+        Film.fetch { result in
+            guard case .success(let films) = result else {
                 XCTFail()
                 return
             }
