@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  SWookiee
+//  SWookiee App
 //
 //  Copyright © 2020 Pokanop Apps LLC. All rights reserved.
 //

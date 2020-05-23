@@ -16,13 +16,15 @@ class IntroViewController: UIViewController {
         view.text = """
         SWookiee
         
-        Episode X
+        A Star Wars Story
         
         The galaxy was at rest, in a moment's peace from the destruction of the Imperial forces. In a time where programming languages were aplenty and the cognitive overload high to understand complicated paradigms, there was little hope for salvation.
         
         A light of hope arises from the dusty landscape in the form of Swift, so the world needed yet another library for SWAPI. Wielding a simple API and charming app to demonstrate its functionality, SWookiee emerges to save us from eternal boredom.
         
-        Hope you enjoy this as much as I did writing it 🖖
+        Hope you enjoy this as much as I did writing it.
+        
+        🖖
         """
         return view
     }()
@@ -72,10 +74,13 @@ class IntroViewController: UIViewController {
     }
     
     @objc private func skipTapped() {
-        tiltedTextView.fadeOut()
-        skipButton.zoomOut()
-        
-        // TODO: Transition to main controller
+        skipButton.zoomOut() {
+            self.tiltedTextView.fadeOut() {
+                let vc = HomeViewController()
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
+            }
+        }
     }
 
 }

@@ -1,17 +1,20 @@
 //
 //  AppDelegate.swift
-//  SWookiee
+//  SWookiee App
 //
 //  Copyright © 2020 Pokanop Apps LLC. All rights reserved.
 //
 
 import UIKit
+import SWookiee
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Start loading resources so cache is warmed up
+        Root.fetch()
+        
         return true
     }
 

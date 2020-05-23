@@ -1,17 +1,18 @@
 //
-//  SplitViewController.swift
-//  SWookiee
+//  HomeViewController.swift
+//  SWookiee App
 //
 //  Copyright © 2020 Pokanop Apps LLC. All rights reserved.
 //
 
 import UIKit
 
-class SplitViewController: UISplitViewController {
+class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .white
     }
 
 }
