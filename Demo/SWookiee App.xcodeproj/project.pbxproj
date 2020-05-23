@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		977EBBA72467D7AE009F1A93 /* SWookiee in Frameworks */ = {isa = PBXBuildFile; productRef = 977EBBA62467D7AE009F1A93 /* SWookiee */; };
+		97E071BD2478DBF200055C42 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E071BC2478DBF200055C42 /* IntroViewController.swift */; };
+		97E071BF2478EAE500055C42 /* TiltedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E071BE2478EAE500055C42 /* TiltedTextView.swift */; };
 		97FF6F4C24677CB700B9FB56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF6F4B24677CB700B9FB56 /* AppDelegate.swift */; };
 		97FF6F4E24677CB700B9FB56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF6F4D24677CB700B9FB56 /* SceneDelegate.swift */; };
-		97FF6F5024677CB700B9FB56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF6F4F24677CB700B9FB56 /* ViewController.swift */; };
+		97FF6F5024677CB700B9FB56 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FF6F4F24677CB700B9FB56 /* SplitViewController.swift */; };
 		97FF6F5324677CB700B9FB56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97FF6F5124677CB700B9FB56 /* Main.storyboard */; };
 		97FF6F5524677CB700B9FB56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97FF6F5424677CB700B9FB56 /* Assets.xcassets */; };
 		97FF6F5824677CB700B9FB56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97FF6F5624677CB700B9FB56 /* LaunchScreen.storyboard */; };
@@ -31,10 +33,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		97E071BC2478DBF200055C42 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		97E071BE2478EAE500055C42 /* TiltedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltedTextView.swift; sourceTree = "<group>"; };
 		97FF6F4824677CB700B9FB56 /* SWookiee App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWookiee App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97FF6F4B24677CB700B9FB56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97FF6F4D24677CB700B9FB56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		97FF6F4F24677CB700B9FB56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		97FF6F4F24677CB700B9FB56 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		97FF6F5224677CB700B9FB56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97FF6F5424677CB700B9FB56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97FF6F5724677CB700B9FB56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +58,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		97E071B92478CE1500055C42 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				97E071BE2478EAE500055C42 /* TiltedTextView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		97E071BA2478CE1D00055C42 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				97E071BC2478DBF200055C42 /* IntroViewController.swift */,
+				97FF6F4F24677CB700B9FB56 /* SplitViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		97E071BB2478CE2300055C42 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		97FF6F3F24677CB700B9FB56 = {
 			isa = PBXGroup;
 			children = (
@@ -73,9 +101,11 @@
 		97FF6F4A24677CB700B9FB56 /* SWookiee App */ = {
 			isa = PBXGroup;
 			children = (
+				97E071BB2478CE2300055C42 /* Models */,
+				97E071B92478CE1500055C42 /* Views */,
+				97E071BA2478CE1D00055C42 /* Controllers */,
 				97FF6F4B24677CB700B9FB56 /* AppDelegate.swift */,
 				97FF6F4D24677CB700B9FB56 /* SceneDelegate.swift */,
-				97FF6F4F24677CB700B9FB56 /* ViewController.swift */,
 				97FF6F5124677CB700B9FB56 /* Main.storyboard */,
 				97FF6F5424677CB700B9FB56 /* Assets.xcassets */,
 				97FF6F5624677CB700B9FB56 /* LaunchScreen.storyboard */,
@@ -164,9 +194,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97FF6F5024677CB700B9FB56 /* ViewController.swift in Sources */,
+				97FF6F5024677CB700B9FB56 /* SplitViewController.swift in Sources */,
 				97FF6F4C24677CB700B9FB56 /* AppDelegate.swift in Sources */,
 				97FF6F4E24677CB700B9FB56 /* SceneDelegate.swift in Sources */,
+				97E071BD2478DBF200055C42 /* IntroViewController.swift in Sources */,
+				97E071BF2478EAE500055C42 /* TiltedTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

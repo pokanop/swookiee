@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SplitViewController.swift
 //  SWookiee
 //
 //  Copyright © 2020 Pokanop Apps LLC. All rights reserved.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SplitViewController: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,4 +15,3 @@ class ViewController: UIViewController {
     }
 
 }
-
