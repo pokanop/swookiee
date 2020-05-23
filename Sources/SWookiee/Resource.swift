@@ -61,14 +61,14 @@ extension Resource {
             completion?(result)
         }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        Network.shared.provider.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
-                assertionFailure(error!.localizedDescription)
+                completion?(.failure(SWookieeError.network(underlyingError: error!)))
                 return
             }
             
             guard let data = data else {
-                assertionFailure("response data is nil")
+                completion?(.failure(SWookieeError.data))
                 return
             }
             
@@ -80,8 +80,7 @@ extension Resource {
                     innerCompletion(.success(resource))
                 }
             } catch let error {
-                assertionFailure(error.localizedDescription)
-                innerCompletion(.failure(error))
+                innerCompletion(.failure(SWookieeError.decoder(underlyingError: error)))
             }
         }.resume()
     }
@@ -99,14 +98,14 @@ extension Resource {
         var outerResult: [T] = []
         var outerError: Error?
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        Network.shared.provider.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
-                assertionFailure(error!.localizedDescription)
+                completion?(.failure(SWookieeError.network(underlyingError: error!)))
                 return
             }
             
             guard let data = data else {
-                assertionFailure("response data is nil")
+                completion?(.failure(SWookieeError.data))
                 return
             }
             
@@ -127,7 +126,6 @@ extension Resource {
                 }
                 outerResult += page.results as? [T] ?? []
             } catch let error {
-                assertionFailure(error.localizedDescription)
                 outerError = error
             }
             

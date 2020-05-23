@@ -3,6 +3,11 @@ import XCTest
 
 final class SWookieeTests: XCTestCase {
     
+    override func setUp() {
+        super.setUp()
+        Network.shared.provider = URLSession.shared
+    }
+    
     func testRoot() {
         let expectation = XCTestExpectation()
         Root.fetch { result in
@@ -261,6 +266,62 @@ final class SWookieeTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testNetworkError() {
+        let network = TestNetwork()
+        Network.shared.provider = network
+        
+        network.error = NSError(domain: NSCocoaErrorDomain, code: NSURLErrorBadURL, userInfo: nil)
+        Root.fetch { result in
+            guard case .failure(let error) = result else {
+                XCTFail()
+                return
+            }
+            guard case SWookieeError.network(let underlyingError) = error else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(underlyingError.localizedDescription, network.error?.localizedDescription)
+        }
+    }
+    
+    func testDataError() {
+        let network = TestNetwork()
+        Network.shared.provider = network
+        
+        Root.fetch { result in
+            guard case .failure(let error) = result else {
+                XCTFail()
+                return
+            }
+            guard case SWookieeError.data = error else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(error.localizedDescription, SWookieeError.data.localizedDescription)
+        }
+    }
+    
+    func testDecoderError() {
+        let network = TestNetwork()
+        Network.shared.provider = network
+        
+        network.data = "[}]{".data(using: .utf8)
+        Root.fetch { result in
+            guard case .failure(let error) = result else {
+                XCTFail()
+                return
+            }
+            guard case SWookieeError.decoder(let underlyingError) = error else {
+                XCTFail()
+                return
+            }
+            guard case DecodingError.dataCorrupted = underlyingError else {
+                XCTFail()
+                return
+            }
+        }
+    }
 
     static var allTests = [
         ("testRoot", testRoot),
@@ -276,6 +337,10 @@ final class SWookieeTests: XCTestCase {
         ("testSpeciesSingle", testSpeciesSingle),
         ("testStarship", testStarship),
         ("testVehicle", testVehicle),
+        ("testCache", testCache),
+        ("testNetworkError", testNetworkError),
+        ("testDataError", testDataError),
+        ("testDecoderError", testDecoderError)
     ]
     
 }
