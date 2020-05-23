@@ -30,3 +30,11 @@ public struct Starship: Resource {
     }
     
 }
+
+extension Starship: FilmsProvider, CharactersProvider {
+    
+    public var characters: [URL] {
+        return pilots
+    }
+    
+}

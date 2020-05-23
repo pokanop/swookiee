@@ -25,4 +25,7 @@ public struct Film: Resource {
         case updated = "edited"
         case episode = "episodeId"  // Really?? 😒 The decoder should be smarter, if converting from snake_case
     }
+    
 }
+
+extension Film: CharactersProvider, PlanetsProvider, SpeciesProvider, VehiclesProvider {}

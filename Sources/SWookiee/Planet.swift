@@ -25,3 +25,11 @@ public struct Planet: Resource {
     }
     
 }
+
+extension Planet: CharactersProvider, FilmsProvider {
+    
+    public var characters: [URL] {
+        return residents
+    }
+    
+}

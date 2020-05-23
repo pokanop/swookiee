@@ -6,15 +6,12 @@
 //
 
 import UIKit
-import SWookiee
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Start loading resources so cache is warmed up
-        Root.fetch()
-        
+        // Override point for customization after application launch.
         return true
     }
 

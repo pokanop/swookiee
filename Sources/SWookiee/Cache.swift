@@ -27,6 +27,7 @@ public class Cache {
     
     public func reset() {
         cache.removeAll()
+        urls.removeAll()
     }
     
 }

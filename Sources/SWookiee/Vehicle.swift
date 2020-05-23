@@ -27,3 +27,11 @@ public struct Vehicle: Resource {
     }
     
 }
+
+extension Vehicle: FilmsProvider, CharactersProvider {
+    
+    public var characters: [URL] {
+        return pilots
+    }
+    
+}

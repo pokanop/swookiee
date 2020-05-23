@@ -27,3 +27,5 @@ public struct Person: Resource {
     }
     
 }
+
+extension Person: FilmsProvider, SpeciesProvider, StarshipsProvider, VehiclesProvider {}
