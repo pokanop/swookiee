@@ -71,8 +71,6 @@ class HomeViewController: UIViewController {
         guard let selectedCell = selectedCell else { return }
         selectedCell.fadeIn(direction: .right)
         self.selectedCell = nil
-        
-        collectionView.isUserInteractionEnabled = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -87,15 +85,19 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? SectionCell else { return }
-        
-        collectionView.isUserInteractionEnabled = false
+        guard selectedCell == nil else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SectionCell, let section = cell.section else { return }
         
         selectedCell = cell
-        cell.fadeOut(direction: .right) {
-            let vc = ResourcesViewController()
-            vc.title = Section.allCases[indexPath.row].title
-            self.navigationController?.pushViewController(vc, animated: true)
+        cell.showLoader()
+        section.fetch { resources in
+            cell.hideLoader()
+            cell.fadeOut(direction: .right) {
+                let vc = ResourcesViewController()
+                vc.section = section
+                vc.resources = resources
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     

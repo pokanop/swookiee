@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SWookiee
 
 enum Section: Int, CaseIterable {
     case films, people, planets, species, starships, vehicles
@@ -56,4 +57,16 @@ enum Section: Int, CaseIterable {
         cell.configure(item: item)
         return cell
     }
+    
+    func fetch(completion: @escaping ([AnyResource]) -> ()) {
+        switch self {
+        case .films: Film.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) } ) })
+        case .people: Person.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) } ) })
+        case .planets: Planet.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) } ) })
+        case .species: Species.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) } ) })
+        case .starships: Starship.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) } ) })
+        case .vehicles: Vehicle.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) } ) })
+        }
+    }
+    
 }

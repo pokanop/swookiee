@@ -10,6 +10,13 @@ import SWookiee
 
 class ResourceCell: UICollectionViewCell, ReuseProvider {
     
+    private let loader: Loader = {
+        let view = Loader()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.alpha = 0
+        return view
+    }()
+    
     let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -46,12 +53,17 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
             backgroundImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
         
-        contentView.addSubview(label)
+        backgroundImageView.addSubview(label)
         NSLayoutConstraint.activate([
-            label.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5),
-            label.heightAnchor.constraint(equalToConstant: 40.0),
-            label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            label.widthAnchor.constraint(equalTo: backgroundImageView.widthAnchor, multiplier: 0.5),
+            label.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor)
+        ])
+        
+        contentView.addSubview(loader)
+        NSLayoutConstraint.activate([
+            loader.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            loader.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
     
@@ -61,6 +73,16 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
     
     func configure(item: AnyHashable) {
         // Override and configure each cell type
+    }
+    
+    func showLoader() {
+        backgroundImageView.alpha(0.3, options: [.duration(0.5)])
+        loader.alpha(1.0, options: [.duration(0.5)])
+    }
+    
+    func hideLoader() {
+        loader.alpha(0, options: [.duration(0.5)])
+        backgroundImageView.alpha(1.0, options: [.duration(0.5)])
     }
     
 }
