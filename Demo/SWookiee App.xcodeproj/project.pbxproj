@@ -22,6 +22,7 @@
 		9716B278247ADE0F00AD59B9 /* Starjedi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9716B277247ADE0F00AD59B9 /* Starjedi.ttf */; };
 		9716B27B247ADEA800AD59B9 /* FontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B27A247ADEA800AD59B9 /* FontExtensions.swift */; };
 		9716B280247AE98900AD59B9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B27F247AE98900AD59B9 /* NavigationController.swift */; };
+		9716B282247AF3E700AD59B9 /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B281247AF3E700AD59B9 /* ResourcesViewController.swift */; };
 		977EBBA72467D7AE009F1A93 /* SWookiee in Frameworks */ = {isa = PBXBuildFile; productRef = 977EBBA62467D7AE009F1A93 /* SWookiee */; };
 		97E071BD2478DBF200055C42 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E071BC2478DBF200055C42 /* IntroViewController.swift */; };
 		97E071BF2478EAE500055C42 /* TiltedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E071BE2478EAE500055C42 /* TiltedTextView.swift */; };
@@ -63,6 +64,7 @@
 		9716B277247ADE0F00AD59B9 /* Starjedi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Starjedi.ttf; sourceTree = "<group>"; };
 		9716B27A247ADEA800AD59B9 /* FontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtensions.swift; sourceTree = "<group>"; };
 		9716B27F247AE98900AD59B9 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		9716B281247AF3E700AD59B9 /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
 		97E071BC2478DBF200055C42 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		97E071BE2478EAE500055C42 /* TiltedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltedTextView.swift; sourceTree = "<group>"; };
 		97FF6F4824677CB700B9FB56 /* SWookiee App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWookiee App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 				97E071BC2478DBF200055C42 /* IntroViewController.swift */,
 				97FF6F4F24677CB700B9FB56 /* HomeViewController.swift */,
 				9716B27F247AE98900AD59B9 /* NavigationController.swift */,
+				9716B281247AF3E700AD59B9 /* ResourcesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				9716B25C247A004800AD59B9 /* FilmCell.swift in Sources */,
 				97E071BD2478DBF200055C42 /* IntroViewController.swift in Sources */,
 				97E071BF2478EAE500055C42 /* TiltedTextView.swift in Sources */,
+				9716B282247AF3E700AD59B9 /* ResourcesViewController.swift in Sources */,
 				9716B26F247A056F00AD59B9 /* ReuseProvider.swift in Sources */,
 				9716B266247A00C100AD59B9 /* StarshipCell.swift in Sources */,
 				9716B280247AE98900AD59B9 /* NavigationController.swift in Sources */,

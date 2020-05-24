@@ -10,6 +10,8 @@ import SWookiee
 
 class HomeViewController: UIViewController {
     
+    private var selectedCell: SectionCell?
+    
     private enum SectionLayoutKind {
         case main
     }
@@ -62,15 +64,38 @@ class HomeViewController: UIViewController {
         snapshot.appendItems(Section.allCases)
         datasource.apply(snapshot, animatingDifferences: false)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard let selectedCell = selectedCell else { return }
+        selectedCell.fadeIn(direction: .right)
+        self.selectedCell = nil
+        
+        collectionView.isUserInteractionEnabled = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        guard let selectedCell = selectedCell else { return }
+        selectedCell.identity().alpha(0).now()
+    }
 
 }
 
 extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SectionCell else { return }
+        
+        collectionView.isUserInteractionEnabled = false
+        
+        selectedCell = cell
         cell.fadeOut(direction: .right) {
-            // TODO: Push resources view controller
+            let vc = ResourcesViewController()
+            vc.title = Section.allCases[indexPath.row].title
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
