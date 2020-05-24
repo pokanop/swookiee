@@ -13,7 +13,7 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
     let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .monospacedSystemFont(ofSize: 20.0, weight: .bold)
+        label.font = UIFont.starWarsTitleFont
         label.textAlignment = .center
         label.textColor = .yellow
         return label

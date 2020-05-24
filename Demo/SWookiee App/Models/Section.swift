@@ -12,12 +12,12 @@ enum Section: Int, CaseIterable {
     
     var title: String {
         switch self {
-        case .films: return "Films"
-        case .people: return "People"
-        case .planets: return "Planets"
-        case .species: return "Species"
-        case .starships: return "Starships"
-        case .vehicles: return "Vehicles"
+        case .films: return "films"
+        case .people: return "people"
+        case .planets: return "planets"
+        case .species: return "species"
+        case .starships: return "starships"
+        case .vehicles: return "vehicles"
         }
     }
     

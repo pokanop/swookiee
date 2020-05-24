@@ -18,7 +18,7 @@ class TiltedTextView: UITextView {
         isSelectable = false
         isEditable = false
         backgroundColor = .clear
-        font = .monospacedSystemFont(ofSize: 18.0, weight: .medium)
+        font = UIFont.starWarsBodyFont
         textAlignment = .center
         textColor = .yellow
         text = """
