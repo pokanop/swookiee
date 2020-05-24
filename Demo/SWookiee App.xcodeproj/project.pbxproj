@@ -21,6 +21,7 @@
 		9716B273247A37D200AD59B9 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B272247A37D200AD59B9 /* Section.swift */; };
 		9716B278247ADE0F00AD59B9 /* Starjedi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9716B277247ADE0F00AD59B9 /* Starjedi.ttf */; };
 		9716B27B247ADEA800AD59B9 /* FontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B27A247ADEA800AD59B9 /* FontExtensions.swift */; };
+		9716B280247AE98900AD59B9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B27F247AE98900AD59B9 /* NavigationController.swift */; };
 		977EBBA72467D7AE009F1A93 /* SWookiee in Frameworks */ = {isa = PBXBuildFile; productRef = 977EBBA62467D7AE009F1A93 /* SWookiee */; };
 		97E071BD2478DBF200055C42 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E071BC2478DBF200055C42 /* IntroViewController.swift */; };
 		97E071BF2478EAE500055C42 /* TiltedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E071BE2478EAE500055C42 /* TiltedTextView.swift */; };
@@ -61,6 +62,7 @@
 		9716B272247A37D200AD59B9 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		9716B277247ADE0F00AD59B9 /* Starjedi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Starjedi.ttf; sourceTree = "<group>"; };
 		9716B27A247ADEA800AD59B9 /* FontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtensions.swift; sourceTree = "<group>"; };
+		9716B27F247AE98900AD59B9 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		97E071BC2478DBF200055C42 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		97E071BE2478EAE500055C42 /* TiltedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltedTextView.swift; sourceTree = "<group>"; };
 		97FF6F4824677CB700B9FB56 /* SWookiee App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWookiee App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +136,7 @@
 			children = (
 				97E071BC2478DBF200055C42 /* IntroViewController.swift */,
 				97FF6F4F24677CB700B9FB56 /* HomeViewController.swift */,
+				9716B27F247AE98900AD59B9 /* NavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -166,11 +169,11 @@
 			isa = PBXGroup;
 			children = (
 				9716B276247ADDD200AD59B9 /* Assets */,
-				9716B279247ADE9700AD59B9 /* Extensions */,
-				9716B26B247A046F00AD59B9 /* Protocols */,
-				97E071BB2478CE2300055C42 /* Models */,
-				97E071B92478CE1500055C42 /* Views */,
 				97E071BA2478CE1D00055C42 /* Controllers */,
+				9716B279247ADE9700AD59B9 /* Extensions */,
+				97E071BB2478CE2300055C42 /* Models */,
+				9716B26B247A046F00AD59B9 /* Protocols */,
+				97E071B92478CE1500055C42 /* Views */,
 				97FF6F4B24677CB700B9FB56 /* AppDelegate.swift */,
 				97FF6F4D24677CB700B9FB56 /* SceneDelegate.swift */,
 				97FF6F5124677CB700B9FB56 /* Main.storyboard */,
@@ -273,6 +276,7 @@
 				97E071BF2478EAE500055C42 /* TiltedTextView.swift in Sources */,
 				9716B26F247A056F00AD59B9 /* ReuseProvider.swift in Sources */,
 				9716B266247A00C100AD59B9 /* StarshipCell.swift in Sources */,
+				9716B280247AE98900AD59B9 /* NavigationController.swift in Sources */,
 				9716B26D247A049900AD59B9 /* KindProvider.swift in Sources */,
 				9716B264247A00B200AD59B9 /* SpeciesCell.swift in Sources */,
 				9716B262247A00A200AD59B9 /* VehicleCell.swift in Sources */,

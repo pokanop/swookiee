@@ -38,12 +38,14 @@ class HomeViewController: UIViewController {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
+        view.delegate = self
         return view
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "SWookiee"
         view.backgroundColor = .white
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
@@ -61,4 +63,15 @@ class HomeViewController: UIViewController {
         datasource.apply(snapshot, animatingDifferences: false)
     }
 
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        cell.fadeOut(direction: .right) {
+            // TODO: Push resources view controller
+        }
+    }
+    
 }

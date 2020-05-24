@@ -76,7 +76,7 @@ class IntroViewController: UIViewController {
     @objc private func skipTapped() {
         skipButton.zoomOut() {
             self.tiltedTextView.fadeOut() {
-                let vc = HomeViewController()
+                let vc = NavigationController(rootViewController: HomeViewController())
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true)
             }
