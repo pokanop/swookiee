@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Page<T: Resource>: Decodable {
+public struct Page<T: DecodableResource>: Decodable {
     
     let count: Int
     let next: URL?

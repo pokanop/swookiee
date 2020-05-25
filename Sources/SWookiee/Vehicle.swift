@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Vehicle: Resource {
+public struct Vehicle: DecodableResource {
     
     public static let endpoint: Endpoint = .vehicles
     public let id: UUID = UUID()

@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Starship: Resource {
+public struct Starship: DecodableResource {
     
     public static let endpoint: Endpoint = .starships
     public let id: UUID = UUID()

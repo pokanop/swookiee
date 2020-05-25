@@ -6,6 +6,7 @@ final class SWookieeTests: XCTestCase {
     override func setUp() {
         super.setUp()
         Network.shared.provider = URLSession.shared
+        Cache.shared.reset()
     }
     
     func testRoot() {

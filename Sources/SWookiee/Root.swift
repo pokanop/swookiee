@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Root: Resource {
+public struct Root: DecodableResource {
     
     public static let endpoint: Endpoint = .root
     public let id: UUID = UUID()

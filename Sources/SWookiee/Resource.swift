@@ -1,16 +1,6 @@
 import Foundation
 
-@frozen public struct AnyResource {
-    
-    public var base: Any
-    
-    public init<R: Resource>(_ base: R) {
-        self.base = base
-    }
-    
-}
-
-public protocol Resource: Decodable, Hashable {
+public protocol Resource: Hashable {
     
     static var endpoint: Endpoint { get }
     var id: UUID { get }
@@ -21,7 +11,9 @@ public protocol Resource: Decodable, Hashable {
     
 }
 
-public extension Resource {
+public protocol DecodableResource: Resource & Decodable {}
+
+public extension DecodableResource {
     
     var name: String { Self.endpoint.rawValue }
     var url: URL { Self.endpoint.baseURL }
@@ -46,9 +38,9 @@ public extension Resource {
     
 }
 
-extension Resource {
+extension DecodableResource {
     
-    static func fetch<T: Resource>(url: URL, completion: ((Result<T, Error>) -> ())? = nil) {
+    static func fetch<T: DecodableResource>(url: URL, completion: ((Result<T, Error>) -> ())? = nil) {
         let completion = wrappedCompletion(completion)
         
         if let resource: T = Cache.shared.get(url) {
@@ -87,7 +79,7 @@ extension Resource {
         }.resume()
     }
     
-    static func fetch<T: Resource>(urls: [URL], completion: ((Result<[T], Error>) -> ())? = nil) {
+    static func fetch<T: DecodableResource>(urls: [URL], completion: ((Result<[T], Error>) -> ())? = nil) {
         let completion = wrappedCompletion(completion)
         
         var resources: [T] = []
@@ -130,7 +122,7 @@ extension Resource {
         }
     }
     
-    static func fetch<T: Resource>(url: URL, group: DispatchGroup? = nil, completion: ((Result<[T], Error>) -> ())? = nil) {
+    static func fetch<T: DecodableResource>(url: URL, group: DispatchGroup? = nil, completion: ((Result<[T], Error>) -> ())? = nil) {
         let completion = wrappedCompletion(completion)
         
         if let resources: [T] = Cache.shared.get(url) {
@@ -196,7 +188,7 @@ extension Resource {
         }
     }
     
-    static func wrappedCompletion<T: Resource>(_ completion: ((Result<T, Error>) -> ())? = nil) -> ((Result<T, Error>) -> ())? {
+    static func wrappedCompletion<T: DecodableResource>(_ completion: ((Result<T, Error>) -> ())? = nil) -> ((Result<T, Error>) -> ())? {
         guard let completion = completion else { return nil }
         return { result in
             DispatchQueue.main.async {
@@ -205,7 +197,7 @@ extension Resource {
         }
     }
     
-    static func wrappedCompletion<T: Resource>(_ completion: ((Result<[T], Error>) -> ())? = nil) -> ((Result<[T], Error>) -> ())? {
+    static func wrappedCompletion<T: DecodableResource>(_ completion: ((Result<[T], Error>) -> ())? = nil) -> ((Result<[T], Error>) -> ())? {
         guard let completion = completion else { return nil }
         return { result in
             DispatchQueue.main.async {

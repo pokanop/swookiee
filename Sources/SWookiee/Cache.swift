@@ -12,7 +12,7 @@ public class Cache {
     }
     
     public func get<T: Resource>(_ url: URL) -> T? {
-        return cache[url]?.base as? T
+        return cache[url]?._box._base as? T
     }
     
     public func set<T: Resource>(_ items: [T], for url: URL) {
@@ -22,7 +22,7 @@ public class Cache {
     
     public func get<T: Resource>(_ url: URL) -> [T]? {
         guard let urls = urls[url] else { return nil }
-        return urls.compactMap { cache[$0]?.base as? T }
+        return urls.compactMap { cache[$0]?._box._base as? T }
     }
     
     public func reset() {
