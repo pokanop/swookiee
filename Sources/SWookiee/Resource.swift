@@ -122,73 +122,89 @@ extension DecodableResource {
         }
     }
     
-    static func fetch<T: DecodableResource>(url: URL, group: DispatchGroup? = nil, completion: ((Result<[T], Error>) -> ())? = nil) {
+    static func fetch<T: DecodableResource>(url: URL, completion: ((Result<[T], Error>) -> ())? = nil) {
         let completion = wrappedCompletion(completion)
         
         if let resources: [T] = Cache.shared.get(url) {
             completion?(.success(resources))
             return
         }
-            
-        let firstRequest = group == nil
-        let group: DispatchGroup = group ?? DispatchGroup()
-        group.enter()
         
-        var outerResult: [T] = []
-        var outerError: Error?
+        let group = DispatchGroup()
+        var results: [T]?
+        var errors: [Error]?
         
-        Network.shared.provider.dataTask(with: url) { (data, response, error) in
-            guard error == nil else {
-                completion?(.failure(SWookieeError.network(underlyingError: error!)))
-                return
-            }
+        fetch(url: url, group: group) { (r: [T], e: [Error]) in
+            results = r
+            errors = e
+        }
+        
+        // Wait for all requests to complete before caching and calling completion
+        DispatchQueue.global().async {
+            group.wait()
             
-            guard let data = data else {
+            if let errors = errors, errors.count > 0 {
+                completion?(.failure(errors[0]))
+            } else if let results = results {
+                Cache.shared.set(results, for: url)
+                completion?(.success(results))
+            } else {
                 completion?(.failure(SWookieeError.data))
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .custom(DateFormatter.dateDecoder)
-            do {
-                let page = try decoder.decode(Page<Self>.self, from: data)
-                if let next = page.next {
-                    let innerCompletion: (Result<[T], Error>) -> () = { result in
-                        guard case .success(let resources) = result else {
-                            outerError = error
-                            return
-                        }
-                        outerResult += resources
-                    }
-                    fetch(url: next, group: group, completion: innerCompletion)
-                }
-                outerResult += page.results as? [T] ?? []
-            } catch let error {
-                outerError = error
-            }
-            
-            group.leave()
-        }.resume()
-        
-        if firstRequest {
-            DispatchQueue.global().async {
-                group.wait()
-                
-                if outerResult.count > 0 {
-                    Cache.shared.set(outerResult, for: url)
-                }
-                
-                if let outerError = outerError {
-                    completion?(.failure(outerError))
-                } else {
-                    completion?(.success(outerResult))
-                }
             }
         }
     }
     
-    static func wrappedCompletion<T: DecodableResource>(_ completion: ((Result<T, Error>) -> ())? = nil) -> ((Result<T, Error>) -> ())? {
+    private static func fetch<T: DecodableResource>(url: URL, group: DispatchGroup, completion: @escaping ([T], [Error]) -> ()) {
+        group.enter()
+        
+        Network.shared.provider.dataTask(with: url) { (data, response, error) in
+            DispatchQueue.global().async {
+                var dsema = DispatchSemaphore(value: 0)
+                var results: [T] = []
+                var errors: [Error] = []
+                
+                defer {
+                    dsema.wait()
+                    completion(results, errors)
+                    group.leave()
+                }
+                
+                guard error == nil else {
+                    errors.append(SWookieeError.network(underlyingError: error!))
+                    return
+                }
+                
+                guard let data = data else {
+                    errors.append(SWookieeError.data)
+                    return
+                }
+                
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                decoder.dateDecodingStrategy = .custom(DateFormatter.dateDecoder)
+                do {
+                    let page = try decoder.decode(Page<Self>.self, from: data)
+                    results += page.results as? [T] ?? []
+                    
+                    if let next = page.next {
+                        fetch(url: next, group: group) { (r: [T], e: [Error]) in
+                            results += r
+                            errors += e
+                            
+                            dsema.signal()
+                        }
+                    } else {
+                        dsema.signal()
+                    }
+                } catch let error {
+                    errors.append(error)
+                    dsema.signal()
+                }
+            }
+        }.resume()
+    }
+    
+    private static func wrappedCompletion<T: DecodableResource>(_ completion: ((Result<T, Error>) -> ())? = nil) -> ((Result<T, Error>) -> ())? {
         guard let completion = completion else { return nil }
         return { result in
             DispatchQueue.main.async {
@@ -197,7 +213,7 @@ extension DecodableResource {
         }
     }
     
-    static func wrappedCompletion<T: DecodableResource>(_ completion: ((Result<[T], Error>) -> ())? = nil) -> ((Result<[T], Error>) -> ())? {
+    private static func wrappedCompletion<T: DecodableResource>(_ completion: ((Result<[T], Error>) -> ())? = nil) -> ((Result<[T], Error>) -> ())? {
         guard let completion = completion else { return nil }
         return { result in
             DispatchQueue.main.async {

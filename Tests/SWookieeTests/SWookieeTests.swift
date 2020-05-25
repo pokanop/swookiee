@@ -105,6 +105,26 @@ final class SWookieeTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
+    func testLinkedResources() {
+        let expectation = XCTestExpectation()
+        Film.fetch(id: 1) { result in
+            guard case .success(let film) = result else {
+                XCTFail()
+                return
+            }
+            XCTAssertTrue(film.characters.count > 0)
+            film.characters { result in
+                guard case .success(let characters) = result else {
+                    XCTFail()
+                    return
+                }
+                XCTAssertTrue(characters.count > 0)
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
     func testFilm() {
         let expectation = XCTestExpectation()
         Film.fetch(id: 1) { result in
@@ -332,6 +352,7 @@ final class SWookieeTests: XCTestCase {
         ("testSpecies", testSpecies),
         ("testStarships", testStarships),
         ("testVehicles", testVehicles),
+        ("testLinkedResources", testLinkedResources),
         ("testFilm", testFilm),
         ("testPerson", testPerson),
         ("testPlanet", testPlanet),
