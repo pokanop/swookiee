@@ -20,7 +20,9 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
     let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.starWarsTitleFont
+        label.font = UIFont.starWarsBodyFont
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .yellow
         return label
@@ -55,7 +57,7 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
         
         backgroundImageView.addSubview(label)
         NSLayoutConstraint.activate([
-            label.widthAnchor.constraint(equalTo: backgroundImageView.widthAnchor, multiplier: 0.5),
+            label.widthAnchor.constraint(equalTo: backgroundImageView.widthAnchor),
             label.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor)
         ])
@@ -71,17 +73,21 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(item: AnyHashable) {
+    func configure(item: AnyResource) {
         // Override and configure each cell type
+        label.text = item.name
     }
     
     func showLoader() {
         backgroundImageView.alpha(0.3, options: [.duration(0.5)])
+        loader.startAnimating()
         loader.alpha(1.0, options: [.duration(0.5)])
     }
     
     func hideLoader() {
-        loader.alpha(0, options: [.duration(0.5)])
+        loader.alpha(0, options: [.duration(0.5)]) {
+            self.loader.stopAnimating()
+        }
         backgroundImageView.alpha(1.0, options: [.duration(0.5)])
     }
     

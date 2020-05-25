@@ -52,7 +52,7 @@ enum Section: Int, CaseIterable {
         collectionView.register(cellType, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
-    func dequeueCell(from collectionView: UICollectionView, for indexPath: IndexPath, with item: AnyHashable) -> ResourceCell? {
+    func dequeueCell(from collectionView: UICollectionView, for indexPath: IndexPath, with item: AnyResource) -> ResourceCell? {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ResourceCell else { return nil }
         cell.configure(item: item)
         return cell

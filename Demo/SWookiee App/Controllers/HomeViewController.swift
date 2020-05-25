@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
     
     private lazy var datasource: DataSource = DataSource(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionCell.reuseIdentifier, for: indexPath) as? SectionCell else { return nil }
-        cell.configure(item: Section.allCases[indexPath.row])
+        cell.section = Section.allCases[indexPath.row]
         return cell
     }
     
@@ -49,6 +49,7 @@ class HomeViewController: UIViewController {
         
         title = "SWookiee"
         view.backgroundColor = .white
+        
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),

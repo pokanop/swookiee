@@ -30,7 +30,6 @@ class Loader: UIView {
         ball.frame.size = CGSize(width: width, height: width)
         ball.path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: width, height: width)).cgPath
         ball.fillColor = UIColor.white.cgColor
-        ball.add(animation, forKey: "scale")
         return ball
     }()
     
@@ -57,6 +56,14 @@ class Loader: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func startAnimating() {
+        ball.add(animation, forKey: "scale")
+    }
+    
+    func stopAnimating() {
+        ball.removeAnimation(forKey: "scale")
     }
     
 }
