@@ -18,8 +18,7 @@ class ResourceViewController: UIViewController {
     var resource: AnyResource!
     var attributes: [String: String] { resource.attributes }
     var attributeNames: [String] { attributes.keys.sorted() }
-    var relationships: [Section: [URL]] { resource.relationships }
-    var relationshipNames: [String] { relationships.keys.sorted().map { $0.title } }
+    var relationshipNames: [String] { resource.relationships.keys.sorted() }
     
     private typealias DataSource = UICollectionViewDiffableDataSource<SectionLayoutKind, String>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, String>
@@ -86,9 +85,14 @@ extension ResourceViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = SectionLayoutKind(rawValue: indexPath.section)!
         guard section == .relationships else { return }
-        guard let relationship = Section.from(title: relationshipNames[indexPath.row]) else { return }
         
-        // TODO: Create `ResourcesViewController` from here and push onto nav stack
+        let relationship = relationshipNames[indexPath.row]
+        resource.fetch(for: relationship) { resources in
+            let vc = ResourcesViewController()
+            vc.section = Section.from(title: relationship)!
+            vc.resources = resources
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

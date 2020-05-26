@@ -11,15 +11,20 @@ import SWookiee
 protocol DisplayableResource {
     
     var attributes: [String: String] { get }
-    var relationships: [Section: [URL]] { get }
+    var relationships: [String: Section] { get }
     
+    func fetch(for relationship: String, completion: @escaping ([AnyResource]) -> ())
 }
 
 extension AnyResource: DisplayableResource {
     
     var displayableResource: DisplayableResource? { unboxed() }
     var attributes: [String: String] { displayableResource?.attributes ?? [:] }
-    var relationships: [Section: [URL]] { displayableResource?.relationships ?? [:] }
+    var relationships: [String: Section] { displayableResource?.relationships ?? [:] }
+    
+    func fetch(for relationship: String, completion: @escaping ([AnyResource]) -> ()) {
+        displayableResource?.fetch(for: relationship, completion: completion)
+    }
     
 }
 
@@ -39,14 +44,25 @@ extension Film: DisplayableResource {
         ]
     }
     
-    var relationships: [Section : [URL]] {
+    var relationships: [String: Section] {
         return [
-            .species: species,
-            .starships: starships,
-            .vehicles: vehicles,
-            .people: characters,
-            .planets: planets
+            "Species": .species,
+            "Starships": .starships,
+            "Vehicles": .vehicles,
+            "Characters": .people,
+            "Planets": .planets
         ]
+    }
+    
+    func fetch(for relationship: String, completion: @escaping ([AnyResource]) -> ()) {
+        switch relationship {
+        case "Species": species(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case "Starships": starships(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case "Vehicles": vehicles(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case "Characters": characters(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case "Planets": planets(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        default: completion([])
+        }
     }
     
 }
@@ -69,13 +85,21 @@ extension Person: DisplayableResource {
         ]
     }
     
-    var relationships: [Section : [URL]] {
+    var relationships: [String: Section] {
         return [
-//            .planets: [homeworld],
-            .species: species,
-            .starships: starships,
-            .vehicles: vehicles
+            "Species": .species,
+            "Starships": .starships,
+            "Vehicles": .vehicles
         ]
+    }
+    
+    func fetch(for relationship: String, completion: @escaping ([AnyResource]) -> ()) {
+        switch relationship {
+        case "Species": species(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case "Starships": starships(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case "Vehicles": vehicles(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        default: completion([])
+        }
     }
     
 }
@@ -99,11 +123,19 @@ extension Planet: DisplayableResource {
         ]
     }
     
-    var relationships: [Section : [URL]] {
+    var relationships: [String: Section] {
         return [
-            .people: residents,
-            .films: films
+            "Residents": .people,
+            "Films": .films
         ]
+    }
+    
+    func fetch(for relationship: String, completion: @escaping ([AnyResource]) -> ()) {
+        switch relationship {
+        case "Residents": characters(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case "Films": films(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        default: completion([])
+        }
     }
     
 }
@@ -127,12 +159,20 @@ extension Species: DisplayableResource {
         ]
     }
     
-    var relationships: [Section : [URL]] {
+    var relationships: [String: Section] {
         return [
-            .planets: homeworld != nil ? [homeworld!] : [],
-            .people: characters,
-            .films: films
+            "Homeworld": .planets,
+            "Characters": .people,
+            "Films": .films
         ]
+    }
+    
+    func fetch(for relationship: String, completion: @escaping ([AnyResource]) -> ()) {
+        switch relationship {
+        case "Characters": characters(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case "Films": films(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        default: completion([])
+        }
     }
     
 }
@@ -160,11 +200,19 @@ extension Starship: DisplayableResource {
         ]
     }
     
-    var relationships: [Section : [URL]] {
+    var relationships: [String: Section] {
         return [
-            .films: films,
-            .people: pilots
+            "Films": .films,
+            "Pilots": .people
         ]
+    }
+    
+    func fetch(for relationship: String, completion: @escaping ([AnyResource]) -> ()) {
+        switch relationship {
+        case "Films": films(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case "Pilots": characters(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        default: completion([])
+        }
     }
     
 }
@@ -190,11 +238,19 @@ extension Vehicle: DisplayableResource {
         ]
     }
     
-    var relationships: [Section : [URL]] {
+    var relationships: [String: Section] {
         return [
-            .films: films,
-            .people: pilots
+            "Films": .films,
+            "Pilots": .people
         ]
+    }
+    
+    func fetch(for relationship: String, completion: @escaping ([AnyResource]) -> ()) {
+        switch relationship {
+        case "Films": films(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case "Pilots": characters(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        default: completion([])
+        }
     }
     
 }

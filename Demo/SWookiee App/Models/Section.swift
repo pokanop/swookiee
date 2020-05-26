@@ -44,10 +44,10 @@ enum Section: Int, CaseIterable, Comparable {
     }
     
     static func from(title: String) -> Section? {
-        switch title {
+        switch title.lowercased() {
         case "films": return .films
-        case "people": return .people
-        case "planets": return .planets
+        case "people", "characters", "pilots", "residents": return .people
+        case "planets", "homeworld": return .planets
         case "species": return .species
         case "starships": return .starships
         case "vehicles": return .vehicles
@@ -67,12 +67,12 @@ enum Section: Int, CaseIterable, Comparable {
     
     func fetch(completion: @escaping ([AnyResource]) -> ()) {
         switch self {
-        case .films: Film.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) } ) })
-        case .people: Person.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) } ) })
-        case .planets: Planet.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) } ) })
-        case .species: Species.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) } ) })
-        case .starships: Starship.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) } ) })
-        case .vehicles: Vehicle.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) } ) })
+        case .films: Film.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case .people: Person.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case .planets: Planet.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case .species: Species.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case .starships: Starship.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
+        case .vehicles: Vehicle.fetch(completion: { completion(((try? $0.get()) ?? []).map { AnyResource($0) }) })
         }
     }
     
