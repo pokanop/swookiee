@@ -95,3 +95,23 @@ public extension VehiclesProvider {
     }
     
 }
+
+public protocol HomeworldProvider {
+    
+    var homeworld: URL? { get }
+    
+    func homeworld(completion: ((Result<Planet, Error>) -> ())?)
+    
+}
+
+public extension HomeworldProvider {
+    
+    func homeworld(completion: ((Result<Planet, Error>) -> ())? = nil) {
+        guard let homeworld = homeworld else {
+            completion?(.failure(SWookieeError.data))
+            return
+        }
+        Planet.fetch(url: homeworld, completion: completion)
+    }
+    
+}

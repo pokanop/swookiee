@@ -27,18 +27,10 @@ public struct Species: DecodableResource {
     
 }
 
-extension Species: CharactersProvider, FilmsProvider {
+extension Species: CharactersProvider, FilmsProvider, HomeworldProvider {
     
     public var characters: [URL] {
         return people
-    }
-    
-    public func homeworld(completion: ((Result<Planet, Error>) -> ())? = nil) {
-        guard let homeworld = homeworld else {
-            completion?(.failure(SWookieeError.data))
-            return
-        }
-        Planet.fetch(url: homeworld, completion: completion)
     }
     
 }

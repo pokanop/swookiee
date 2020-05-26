@@ -15,7 +15,7 @@ public struct Person: DecodableResource {
     public let height: String
     public let mass: String
     public let skinColor: String
-    public let homeworld: String
+    public let homeworld: URL?
     public let films: [URL]
     public let species: [URL]
     public let starships: [URL]
@@ -28,4 +28,4 @@ public struct Person: DecodableResource {
     
 }
 
-extension Person: FilmsProvider, SpeciesProvider, StarshipsProvider, VehiclesProvider {}
+extension Person: FilmsProvider, SpeciesProvider, StarshipsProvider, VehiclesProvider, HomeworldProvider {}

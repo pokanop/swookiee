@@ -28,4 +28,4 @@ public struct Film: DecodableResource {
     
 }
 
-extension Film: CharactersProvider, PlanetsProvider, SpeciesProvider, VehiclesProvider {}
+extension Film: CharactersProvider, PlanetsProvider, SpeciesProvider, StarshipsProvider, VehiclesProvider {}
