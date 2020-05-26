@@ -53,12 +53,7 @@ class ResourcesViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(collectionView)
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        ])
+        LayoutPosition.stretch.constraints(for: collectionView, relativeTo: view).activate()
         
         Section.allCases.forEach { collectionView.register($0.cellType, forCellWithReuseIdentifier: $0.reuseIdentifier) }
         

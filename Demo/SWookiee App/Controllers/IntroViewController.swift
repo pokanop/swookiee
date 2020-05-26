@@ -45,19 +45,10 @@ class IntroViewController: UIViewController {
         view.backgroundColor = .black
         
         view.addSubview(tiltedTextView)
-        NSLayoutConstraint.activate([
-            tiltedTextView.topAnchor.constraint(equalTo: view.topAnchor),
-            tiltedTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tiltedTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0),
-            tiltedTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0)
-        ])
+        LayoutPosition.stretch.constraints(for: tiltedTextView, relativeTo: view).activate()
 
         view.addSubview(skipButton)
-        NSLayoutConstraint.activate([
-            skipButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            skipButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            skipButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32.0),
-        ])
+        LayoutPosition.bottom.constraints(for: skipButton, relativeTo: view, padding: -32.0).activate()
     }
     
     override func viewDidAppear(_ animated: Bool) {

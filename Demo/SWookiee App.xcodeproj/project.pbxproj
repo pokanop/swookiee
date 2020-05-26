@@ -24,6 +24,8 @@
 		9716B280247AE98900AD59B9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B27F247AE98900AD59B9 /* NavigationController.swift */; };
 		9716B282247AF3E700AD59B9 /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B281247AF3E700AD59B9 /* ResourcesViewController.swift */; };
 		9716B284247AF95700AD59B9 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B283247AF95700AD59B9 /* Loader.swift */; };
+		9716B286247C8BC100AD59B9 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B285247C8BC100AD59B9 /* ArrayExtensions.swift */; };
+		9716B288247C8F2200AD59B9 /* LayoutPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B287247C8F2200AD59B9 /* LayoutPosition.swift */; };
 		977EBBA72467D7AE009F1A93 /* SWookiee in Frameworks */ = {isa = PBXBuildFile; productRef = 977EBBA62467D7AE009F1A93 /* SWookiee */; };
 		97E071BD2478DBF200055C42 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E071BC2478DBF200055C42 /* IntroViewController.swift */; };
 		97E071BF2478EAE500055C42 /* TiltedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E071BE2478EAE500055C42 /* TiltedTextView.swift */; };
@@ -67,6 +69,8 @@
 		9716B27F247AE98900AD59B9 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		9716B281247AF3E700AD59B9 /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
 		9716B283247AF95700AD59B9 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		9716B285247C8BC100AD59B9 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		9716B287247C8F2200AD59B9 /* LayoutPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutPosition.swift; sourceTree = "<group>"; };
 		97E071BC2478DBF200055C42 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		97E071BE2478EAE500055C42 /* TiltedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltedTextView.swift; sourceTree = "<group>"; };
 		97FF6F4824677CB700B9FB56 /* SWookiee App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWookiee App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +117,7 @@
 		9716B279247ADE9700AD59B9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9716B285247C8BC100AD59B9 /* ArrayExtensions.swift */,
 				9716B27A247ADEA800AD59B9 /* FontExtensions.swift */,
 			);
 			path = Extensions;
@@ -150,6 +155,7 @@
 		97E071BB2478CE2300055C42 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9716B287247C8F2200AD59B9 /* LayoutPosition.swift */,
 				9716B272247A37D200AD59B9 /* Section.swift */,
 			);
 			path = Models;
@@ -275,6 +281,7 @@
 				9716B27B247ADEA800AD59B9 /* FontExtensions.swift in Sources */,
 				9716B271247A349100AD59B9 /* SectionCell.swift in Sources */,
 				9716B268247A00F000AD59B9 /* ResourceCell.swift in Sources */,
+				9716B286247C8BC100AD59B9 /* ArrayExtensions.swift in Sources */,
 				9716B284247AF95700AD59B9 /* Loader.swift in Sources */,
 				97FF6F4C24677CB700B9FB56 /* AppDelegate.swift in Sources */,
 				97FF6F4E24677CB700B9FB56 /* SceneDelegate.swift in Sources */,
@@ -283,6 +290,7 @@
 				97E071BF2478EAE500055C42 /* TiltedTextView.swift in Sources */,
 				9716B282247AF3E700AD59B9 /* ResourcesViewController.swift in Sources */,
 				9716B26F247A056F00AD59B9 /* ReuseProvider.swift in Sources */,
+				9716B288247C8F2200AD59B9 /* LayoutPosition.swift in Sources */,
 				9716B266247A00C100AD59B9 /* StarshipCell.swift in Sources */,
 				9716B280247AE98900AD59B9 /* NavigationController.swift in Sources */,
 				9716B26D247A049900AD59B9 /* KindProvider.swift in Sources */,

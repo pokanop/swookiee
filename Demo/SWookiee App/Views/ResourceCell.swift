@@ -48,25 +48,14 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
         contentView.layer.masksToBounds = true
         
         contentView.addSubview(backgroundImageView)
-        NSLayoutConstraint.activate([
-            backgroundImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            backgroundImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-        ])
+        LayoutPosition.stretch.constraints(for: backgroundImageView, relativeTo: contentView).activate()
         
         backgroundImageView.addSubview(label)
-        NSLayoutConstraint.activate([
-            label.widthAnchor.constraint(equalTo: backgroundImageView.widthAnchor),
-            label.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: backgroundImageView.centerYAnchor)
-        ])
+        LayoutPosition.center.constraints(for: label, relativeTo: backgroundImageView).activate()
+        LayoutPosition.width.constraints(for: label, relativeTo: backgroundImageView).activate()
         
         contentView.addSubview(loader)
-        NSLayoutConstraint.activate([
-            loader.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            loader.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-        ])
+        LayoutPosition.center.constraints(for: loader, relativeTo: contentView).activate()
     }
     
     required init?(coder: NSCoder) {

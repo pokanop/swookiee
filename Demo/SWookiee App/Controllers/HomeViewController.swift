@@ -51,12 +51,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(collectionView)
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        ])
+        LayoutPosition.stretch.constraints(for: collectionView, relativeTo: view).activate()
         
         collectionView.register(SectionCell.self, forCellWithReuseIdentifier: SectionCell.reuseIdentifier)
         
