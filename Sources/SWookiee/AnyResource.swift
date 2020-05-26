@@ -85,4 +85,8 @@ extension AnyResource: Resource {
         _box._hash(into: &hasher)
     }
     
+    public func unboxed<T>() -> T? {
+        return _box._base as? T
+    }
+    
 }
