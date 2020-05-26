@@ -21,7 +21,7 @@ class ResourcesViewController: UIViewController {
     private typealias Snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, AnyResource>
     
     private lazy var datasource: DataSource = DataSource(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.section.cellType.reuseIdentifier, for: indexPath) as? ResourceCell else { return nil }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.section.reuseIdentifier, for: indexPath) as? ResourceCell else { return nil }
         cell.configure(item: self.resources[indexPath.row])
         return cell
     }
@@ -55,7 +55,7 @@ class ResourcesViewController: UIViewController {
         view.addSubview(collectionView)
         LayoutPosition.stretch.constraints(for: collectionView, relativeTo: view).activate()
         
-        Section.allCases.forEach { collectionView.register($0.cellType, forCellWithReuseIdentifier: $0.reuseIdentifier) }
+        collectionView.register(SectionCell.self, forCellWithReuseIdentifier: SectionCell.reuseIdentifier)
         
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
@@ -67,6 +67,10 @@ class ResourcesViewController: UIViewController {
 
 extension ResourcesViewController: UICollectionViewDelegate {
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = ResourceViewController()
+        vc.resource = resources[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
 }

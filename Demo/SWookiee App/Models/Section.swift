@@ -8,8 +8,13 @@
 import UIKit
 import SWookiee
 
-enum Section: Int, CaseIterable {
+enum Section: Int, CaseIterable, Comparable {
+    
     case films, people, planets, species, starships, vehicles
+    
+    static func < (lhs: Section, rhs: Section) -> Bool {
+        return lhs.title < rhs.title
+    }
     
     var title: String {
         switch self {
@@ -22,19 +27,9 @@ enum Section: Int, CaseIterable {
         }
     }
     
-    var cellType: ResourceCell.Type {
-        switch self {
-        case .films: return FilmCell.self
-        case .people: return PersonCell.self
-        case .planets: return PlanetCell.self
-        case .species: return SpeciesCell.self
-        case .starships: return StarshipCell.self
-        case .vehicles: return VehicleCell.self
-        }
-    }
     
     var reuseIdentifier: String {
-        return cellType.reuseIdentifier
+        return SectionCell.reuseIdentifier
     }
     
     var image: UIImage {
@@ -48,8 +43,20 @@ enum Section: Int, CaseIterable {
         }
     }
     
+    static func from(title: String) -> Section? {
+        switch title {
+        case "films": return .films
+        case "people": return .people
+        case "planets": return .planets
+        case "species": return .species
+        case "starships": return .starships
+        case "vehicles": return .vehicles
+        default: return nil
+        }
+    }
+    
     func registerCell(in collectionView: UICollectionView) {
-        collectionView.register(cellType, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(SectionCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     func dequeueCell(from collectionView: UICollectionView, for indexPath: IndexPath, with item: AnyResource) -> ResourceCell? {

@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9716B25C247A004800AD59B9 /* FilmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B25B247A004800AD59B9 /* FilmCell.swift */; };
-		9716B25E247A005C00AD59B9 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B25D247A005C00AD59B9 /* PersonCell.swift */; };
-		9716B260247A009200AD59B9 /* PlanetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B25F247A009200AD59B9 /* PlanetCell.swift */; };
-		9716B262247A00A200AD59B9 /* VehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B261247A00A200AD59B9 /* VehicleCell.swift */; };
-		9716B264247A00B200AD59B9 /* SpeciesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B263247A00B200AD59B9 /* SpeciesCell.swift */; };
-		9716B266247A00C100AD59B9 /* StarshipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B265247A00C100AD59B9 /* StarshipCell.swift */; };
 		9716B268247A00F000AD59B9 /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B267247A00F000AD59B9 /* ResourceCell.swift */; };
 		9716B26A247A045F00AD59B9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B269247A045F00AD59B9 /* HeaderView.swift */; };
 		9716B26D247A049900AD59B9 /* KindProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B26C247A049900AD59B9 /* KindProvider.swift */; };
@@ -26,6 +20,10 @@
 		9716B284247AF95700AD59B9 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B283247AF95700AD59B9 /* Loader.swift */; };
 		9716B286247C8BC100AD59B9 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B285247C8BC100AD59B9 /* ArrayExtensions.swift */; };
 		9716B288247C8F2200AD59B9 /* LayoutPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B287247C8F2200AD59B9 /* LayoutPosition.swift */; };
+		9716B28A247C960300AD59B9 /* ResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B289247C960300AD59B9 /* ResourceViewController.swift */; };
+		9716B28C247CB46800AD59B9 /* ResourceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B28B247CB46800AD59B9 /* ResourceExtensions.swift */; };
+		9716B28E247CBE4600AD59B9 /* AttributeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B28D247CBE4600AD59B9 /* AttributeCell.swift */; };
+		9716B290247CBE5900AD59B9 /* RelationshipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B28F247CBE5900AD59B9 /* RelationshipCell.swift */; };
 		977EBBA72467D7AE009F1A93 /* SWookiee in Frameworks */ = {isa = PBXBuildFile; productRef = 977EBBA62467D7AE009F1A93 /* SWookiee */; };
 		97E071BD2478DBF200055C42 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E071BC2478DBF200055C42 /* IntroViewController.swift */; };
 		97E071BF2478EAE500055C42 /* TiltedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E071BE2478EAE500055C42 /* TiltedTextView.swift */; };
@@ -52,12 +50,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9716B25B247A004800AD59B9 /* FilmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCell.swift; sourceTree = "<group>"; };
-		9716B25D247A005C00AD59B9 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
-		9716B25F247A009200AD59B9 /* PlanetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetCell.swift; sourceTree = "<group>"; };
-		9716B261247A00A200AD59B9 /* VehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCell.swift; sourceTree = "<group>"; };
-		9716B263247A00B200AD59B9 /* SpeciesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesCell.swift; sourceTree = "<group>"; };
-		9716B265247A00C100AD59B9 /* StarshipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipCell.swift; sourceTree = "<group>"; };
 		9716B267247A00F000AD59B9 /* ResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCell.swift; sourceTree = "<group>"; };
 		9716B269247A045F00AD59B9 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		9716B26C247A049900AD59B9 /* KindProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KindProvider.swift; sourceTree = "<group>"; };
@@ -71,6 +63,10 @@
 		9716B283247AF95700AD59B9 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		9716B285247C8BC100AD59B9 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		9716B287247C8F2200AD59B9 /* LayoutPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutPosition.swift; sourceTree = "<group>"; };
+		9716B289247C960300AD59B9 /* ResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
+		9716B28B247CB46800AD59B9 /* ResourceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceExtensions.swift; sourceTree = "<group>"; };
+		9716B28D247CBE4600AD59B9 /* AttributeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeCell.swift; sourceTree = "<group>"; };
+		9716B28F247CBE5900AD59B9 /* RelationshipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipCell.swift; sourceTree = "<group>"; };
 		97E071BC2478DBF200055C42 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		97E071BE2478EAE500055C42 /* TiltedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltedTextView.swift; sourceTree = "<group>"; };
 		97FF6F4824677CB700B9FB56 /* SWookiee App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWookiee App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +115,7 @@
 			children = (
 				9716B285247C8BC100AD59B9 /* ArrayExtensions.swift */,
 				9716B27A247ADEA800AD59B9 /* FontExtensions.swift */,
+				9716B28B247CB46800AD59B9 /* ResourceExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -126,17 +123,13 @@
 		97E071B92478CE1500055C42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9716B25B247A004800AD59B9 /* FilmCell.swift */,
+				9716B28D247CBE4600AD59B9 /* AttributeCell.swift */,
 				9716B269247A045F00AD59B9 /* HeaderView.swift */,
 				9716B283247AF95700AD59B9 /* Loader.swift */,
-				9716B25D247A005C00AD59B9 /* PersonCell.swift */,
-				9716B25F247A009200AD59B9 /* PlanetCell.swift */,
+				9716B28F247CBE5900AD59B9 /* RelationshipCell.swift */,
 				9716B267247A00F000AD59B9 /* ResourceCell.swift */,
 				9716B270247A349100AD59B9 /* SectionCell.swift */,
-				9716B263247A00B200AD59B9 /* SpeciesCell.swift */,
-				9716B265247A00C100AD59B9 /* StarshipCell.swift */,
 				97E071BE2478EAE500055C42 /* TiltedTextView.swift */,
-				9716B261247A00A200AD59B9 /* VehicleCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -148,6 +141,7 @@
 				97FF6F4F24677CB700B9FB56 /* HomeViewController.swift */,
 				9716B27F247AE98900AD59B9 /* NavigationController.swift */,
 				9716B281247AF3E700AD59B9 /* ResourcesViewController.swift */,
+				9716B289247C960300AD59B9 /* ResourceViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -285,19 +279,17 @@
 				9716B284247AF95700AD59B9 /* Loader.swift in Sources */,
 				97FF6F4C24677CB700B9FB56 /* AppDelegate.swift in Sources */,
 				97FF6F4E24677CB700B9FB56 /* SceneDelegate.swift in Sources */,
-				9716B25C247A004800AD59B9 /* FilmCell.swift in Sources */,
 				97E071BD2478DBF200055C42 /* IntroViewController.swift in Sources */,
 				97E071BF2478EAE500055C42 /* TiltedTextView.swift in Sources */,
 				9716B282247AF3E700AD59B9 /* ResourcesViewController.swift in Sources */,
 				9716B26F247A056F00AD59B9 /* ReuseProvider.swift in Sources */,
+				9716B290247CBE5900AD59B9 /* RelationshipCell.swift in Sources */,
+				9716B28A247C960300AD59B9 /* ResourceViewController.swift in Sources */,
 				9716B288247C8F2200AD59B9 /* LayoutPosition.swift in Sources */,
-				9716B266247A00C100AD59B9 /* StarshipCell.swift in Sources */,
 				9716B280247AE98900AD59B9 /* NavigationController.swift in Sources */,
 				9716B26D247A049900AD59B9 /* KindProvider.swift in Sources */,
-				9716B264247A00B200AD59B9 /* SpeciesCell.swift in Sources */,
-				9716B262247A00A200AD59B9 /* VehicleCell.swift in Sources */,
-				9716B25E247A005C00AD59B9 /* PersonCell.swift in Sources */,
-				9716B260247A009200AD59B9 /* PlanetCell.swift in Sources */,
+				9716B28C247CB46800AD59B9 /* ResourceExtensions.swift in Sources */,
+				9716B28E247CBE4600AD59B9 /* AttributeCell.swift in Sources */,
 				9716B26A247A045F00AD59B9 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

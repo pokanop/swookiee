@@ -2,7 +2,6 @@
 //  LayoutPosition.swift
 //  SWookiee App
 //
-//  Created by Sahel Jalal on 5/25/20.
 //  Copyright © 2020 Pokanop Apps LLC. All rights reserved.
 //
 
