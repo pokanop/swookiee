@@ -11,10 +11,16 @@ extension DateFormatter {
         
         if #available(OSX 10.13, *), #available(iOS 11.0, *) {
             let formatter = ISO8601DateFormatter()
-            formatter.formatOptions = [.withFractionalSeconds]
+            formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
             if let date = formatter.date(from: dateString) {
                 return date
             }
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        if let date = formatter.date(from: dateString) {
+            return date
         }
         
         throw DecodingError.dataCorruptedError(in: container, debugDescription: "Date string does not match expected format.")
