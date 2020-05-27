@@ -11,11 +11,21 @@ class NavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationBar.titleTextAttributes = [
+        
+        let normalAppearance = appearance(forCompact: false)
+        navigationBar.standardAppearance = normalAppearance
+        navigationBar.scrollEdgeAppearance = normalAppearance
+        navigationBar.compactAppearance = appearance(forCompact: true)
+    }
+    
+    private func appearance(forCompact compact: Bool) -> UINavigationBarAppearance {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.titleTextAttributes = [
             .foregroundColor: UIColor.red,
-            .font: UIFont.starWarsTitleFont
+            .font: compact ? UIFont.starWarsBodyFont : UIFont.starWarsBarFont
         ]
+        return appearance
     }
     
 }

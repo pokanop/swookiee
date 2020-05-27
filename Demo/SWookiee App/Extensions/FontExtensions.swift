@@ -13,6 +13,10 @@ extension UIFont {
         return UIFont(name: "Starjedi", size: 28.0)!
     }
     
+    static var starWarsBarFont: UIFont {
+        return UIFont(name: "Starjedi", size: 22.0)!
+    }
+    
     static var starWarsBodyFont: UIFont {
         return UIFont(name: "Futura-Medium", size: 18.0)!
     }
