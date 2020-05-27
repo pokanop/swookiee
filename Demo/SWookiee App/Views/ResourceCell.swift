@@ -52,7 +52,7 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
         
         backgroundImageView.addSubview(label)
         LayoutPosition.center.constraints(for: label, relativeTo: backgroundImageView).activate()
-        LayoutPosition.width.constraints(for: label, relativeTo: backgroundImageView).activate()
+        LayoutPosition.width.constraints(for: label, relativeTo: backgroundImageView, padding: 8.0).activate()
         
         contentView.addSubview(loader)
         LayoutPosition.center.constraints(for: loader, relativeTo: contentView).activate()
@@ -64,7 +64,7 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
     
     func configure(item: AnyResource) {
         // Override and configure each cell type
-        label.text = item.name
+        label.text = item.name.lowercased()
     }
     
     func showLoader() {
