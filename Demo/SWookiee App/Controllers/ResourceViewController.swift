@@ -62,7 +62,7 @@ class ResourceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = resource.name
+        title = resource.name.capitalized
         view.backgroundColor = .white
         
         view.addSubview(collectionView)

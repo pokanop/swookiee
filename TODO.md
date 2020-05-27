@@ -3,7 +3,6 @@
 The library and app is in decent shape but there are several optimizations that can be made in retrospect.
 
 - `ResourceExtensions` feels like it has too much and the library isn't optimal for generic usage but good for specialized calls to API like `person.films(...)` or something.
-- Navigation controller shows `Back` sometimes and the name of the previous pages in other cases, need to investigate.
 - Add star field backgrounds to intro and other areas in the app using `CAEmitterLayer`.
 - Auto-navigate to the home page after intro crawler finishes.
 - Add header image to resource views for the item being viewed.
