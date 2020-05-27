@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol TiltedTextViewDelegate: class {
+    
+    func tiltedTextViewDidFinishScrolling()
+    
+}
+
 class TiltedTextView: UITextView {
     
     private var timer: Timer?
+    weak var scrollDelegate: TiltedTextViewDelegate?
 
     init() {
         super.init(frame: .zero, textContainer: nil)
@@ -61,6 +68,7 @@ class TiltedTextView: UITextView {
     func stopScrolling() {
         guard let timer = timer else { return }
         timer.invalidate()
+        scrollDelegate?.tiltedTextViewDidFinishScrolling()
     }
     
     func reset() {

@@ -10,9 +10,10 @@ import Boing
 
 class IntroViewController: UIViewController {
     
-    private let tiltedTextView: TiltedTextView = {
+    private lazy var tiltedTextView: TiltedTextView = {
         let view = TiltedTextView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.scrollDelegate = self
         view.text = """
         SWookiee
         
@@ -65,6 +66,8 @@ class IntroViewController: UIViewController {
     }
     
     @objc private func skipTapped() {
+        guard skipButton.alpha > 0 else { return }
+        
         skipButton.zoomOut() {
             self.tiltedTextView.fadeOut() {
                 let vc = NavigationController(rootViewController: HomeViewController())
@@ -74,4 +77,12 @@ class IntroViewController: UIViewController {
         }
     }
 
+}
+
+extension IntroViewController: TiltedTextViewDelegate {
+    
+    func tiltedTextViewDidFinishScrolling() {
+        skipTapped()
+    }
+    
 }
