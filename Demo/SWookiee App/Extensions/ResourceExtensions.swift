@@ -16,6 +16,17 @@ protocol DisplayableResource {
     func fetch(for relationship: String, completion: @escaping ([AnyResource]) -> ())
 }
 
+extension DisplayableResource {
+    
+    fileprivate func dateString(from date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        return formatter.string(from: date)
+    }
+    
+}
+
 extension AnyResource: DisplayableResource {
     
     var displayableResource: DisplayableResource? { unboxed() }
@@ -34,13 +45,13 @@ extension Film: DisplayableResource {
         return [
             "Name": name,
             "URL": url.absoluteString,
-            "Created": DateFormatter().string(from: created),
-            "Updated": DateFormatter().string(from: updated),
+            "Created": dateString(from: created),
+            "Updated": dateString(from: updated),
             "Episode": String(describing: episode),
             "Opening Crawl": openingCrawl,
             "Director": director,
             "Producer": producer,
-            "Release Date": DateFormatter().string(from: releaseDate)
+            "Release Date": dateString(from: releaseDate)
         ]
     }
     
@@ -73,8 +84,8 @@ extension Person: DisplayableResource {
         return [
             "Name": name,
             "URL": url.absoluteString,
-            "Created": DateFormatter().string(from: created),
-            "Updated": DateFormatter().string(from: updated),
+            "Created": dateString(from: created),
+            "Updated": dateString(from: updated),
             "Birth Year": birthYear,
             "Eye Color": eyeColor,
             "Gender": gender,
@@ -110,8 +121,8 @@ extension Planet: DisplayableResource {
         return [
             "Name": name,
             "URL": url.absoluteString,
-            "Created": DateFormatter().string(from: created),
-            "Updated": DateFormatter().string(from: updated),
+            "Created": dateString(from: created),
+            "Updated": dateString(from: updated),
             "Diameter": diameter,
             "Rotation Period": rotationPeriod,
             "Orbital Period": orbitalPeriod,
@@ -146,8 +157,8 @@ extension Species: DisplayableResource {
         return [
             "Name": name,
             "URL": url.absoluteString,
-            "Created": DateFormatter().string(from: created),
-            "Updated": DateFormatter().string(from: updated),
+            "Created": dateString(from: created),
+            "Updated": dateString(from: updated),
             "Classification": classification,
             "Designation": designation,
             "Average Height": averageHeight,
@@ -183,8 +194,8 @@ extension Starship: DisplayableResource {
         return [
             "Name": name,
             "URL": url.absoluteString,
-            "Created": DateFormatter().string(from: created),
-            "Updated": DateFormatter().string(from: updated),
+            "Created": dateString(from: created),
+            "Updated": dateString(from: updated),
             "model": model,
             "Starship Class": starshipClass,
             "Manufacturer": manufacturer,
@@ -223,8 +234,8 @@ extension Vehicle: DisplayableResource {
         return [
             "Name": name,
             "URL": url.absoluteString,
-            "Created": DateFormatter().string(from: created),
-            "Updated": DateFormatter().string(from: updated),
+            "Created": dateString(from: created),
+            "Updated": dateString(from: updated),
             "Model": model,
             "Vehicle Class": vehicleClass,
             "Manufacturer": manufacturer,
