@@ -40,8 +40,8 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
         
         layer.masksToBounds = false
         layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
-        layer.shadowRadius = 8.0
-        layer.shadowOpacity = 1.0
+        layer.shadowRadius = 7.0
+        layer.shadowOpacity = 0.7
         
         contentView.backgroundColor = .black
         contentView.layer.cornerRadius = 10.0
