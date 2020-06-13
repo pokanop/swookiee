@@ -40,15 +40,18 @@ class ResourceViewController: UIViewController {
     }
     
     private lazy var layout: UICollectionViewCompositionalLayout = {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(100.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: .fixed(8.0), top: .fixed(8.0), trailing: .fixed(8.0), bottom: .fixed(8.0))
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(100.0))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 16.0
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
+        return UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            guard let kind = SectionLayoutKind(rawValue: sectionIndex) else { return nil }
+            let heightDimension: NSCollectionLayoutDimension = kind == .attributes ? .estimated(100.0) : .absolute(44.0)
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: heightDimension)
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: heightDimension)
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 8.0, leading: 8.0, bottom: 8.0, trailing: 8.0)
+            section.interGroupSpacing = 16.0
+            return section
+        }
     }()
     
     private lazy var collectionView: UICollectionView = {
@@ -85,14 +88,29 @@ extension ResourceViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = SectionLayoutKind(rawValue: indexPath.section)!
         guard section == .relationships else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? RelationshipCell else { return }
+        
+        cell.showLoader()
         
         let relationship = relationshipNames[indexPath.row]
         resource.fetch(for: relationship) { resources in
+            cell.hideLoader()
+            
             let vc = ResourcesViewController()
             vc.section = Section.from(title: relationship)!
             vc.resources = resources
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? RelationshipCell else { return }
+        cell.contentView.alpha = 0.5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? RelationshipCell else { return }
+        cell.contentView.alpha = 1.0
     }
     
 }

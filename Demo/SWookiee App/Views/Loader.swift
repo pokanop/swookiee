@@ -9,6 +9,17 @@ import UIKit
 
 class Loader: UIView {
     
+    enum Mode {
+        case light, dark
+        
+        var color: UIColor {
+            switch self {
+            case .light: return  UIColor.white
+            case .dark: return UIColor.darkGray
+            }
+        }
+    }
+    
     private let width: CGFloat = 20.0
     private let padding: CGFloat = 2.0
     private let count: Int = 3
@@ -29,7 +40,7 @@ class Loader: UIView {
         let ball = CAShapeLayer()
         ball.frame.size = CGSize(width: width, height: width)
         ball.path = UIBezierPath(ovalIn: CGRect(x: padding, y: padding, width: width, height: width)).cgPath
-        ball.fillColor = UIColor.white.cgColor
+        ball.fillColor = mode.color.cgColor
         return ball
     }()
     
@@ -44,7 +55,11 @@ class Loader: UIView {
         return replicator
     }()
     
-    init() {
+    private var mode: Mode
+    
+    init(mode: Mode = .light) {
+        self.mode = mode
+        
         super.init(frame: .zero)
         
         layer.addSublayer(replicator)
