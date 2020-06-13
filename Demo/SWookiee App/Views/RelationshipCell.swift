@@ -9,8 +9,8 @@ import UIKit
 
 class RelationshipCell: UICollectionViewCell, ReuseProvider {
     
-    private let loader: Loader = {
-        let view = Loader()
+    private let loader: LoaderView = {
+        let view = LoaderView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.alpha = 0
         return view
