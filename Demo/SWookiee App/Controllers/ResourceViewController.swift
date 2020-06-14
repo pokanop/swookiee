@@ -146,19 +146,28 @@ extension ResourceViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = SectionLayoutKind(rawValue: indexPath.section)!
-        guard section == .relationships else { return }
-        guard let cell = collectionView.cellForItem(at: indexPath) as? RelationshipCell else { return }
         
-        cell.showLoader()
-        
-        let relationship = relationshipNames[indexPath.row]
-        resource.fetch(for: relationship) { resources in
-            cell.hideLoader()
+        if section == .relationships {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? RelationshipCell else { return }
             
-            let vc = ResourcesViewController()
-            vc.section = Section.from(title: relationship)!
-            vc.resources = resources
-            self.navigationController?.pushViewController(vc, animated: true)
+            cell.showLoader()
+            
+            let relationship = relationshipNames[indexPath.row]
+            resource.fetch(for: relationship) { resources in
+                cell.hideLoader()
+                
+                let vc = ResourcesViewController()
+                vc.section = Section.from(title: relationship)!
+                vc.resources = resources
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        } else if section == .images {
+            let key = imageNames[indexPath.row]
+            guard let image = images[key] else { return }
+            
+            let vc = ImageViewController()
+            vc.loadImage(url: image.largeImageURL)
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
