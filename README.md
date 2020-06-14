@@ -61,6 +61,10 @@ The library [caches](https://github.com/pokanop/swookiee/blob/master/Sources/SWo
 
 Additionally, when you call `fetch` on any of the `Resource` types, it will follow pages automatically as well and get **all** the available data from SWAPI. Again, this may or may not be ideal, but can be augmented in the future.
 
+## Image Search
+
+The app tries to search for images from [Pixabay](https://pixabay.com/) so you'll need to update [`ImageService`](https://github.com/pokanop/swookiee/blob/adf5b793e0cafa70cfa1f8a15af1ab1d058a8471/Demo/SWookiee%20App/Services/ImageService.swift#L22) with an API key. Otherwise, the images feature will not work.
+
 ## Contributing
 
 Contributions are what makes the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
