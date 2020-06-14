@@ -19,7 +19,7 @@ class ImageService {
     static let shared: ImageService = ImageService()
     
     private var cache: [URL: UIImage] = [:]
-    private let apiKey: String = "17035516-f516a7e8c059dd54118812237"   // TODO: Set your pixabay API key here
+    private let apiKey: String = ""   // TODO: Set your pixabay API key here
     
     private init() {}
     
