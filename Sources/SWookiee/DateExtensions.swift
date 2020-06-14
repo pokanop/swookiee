@@ -15,6 +15,12 @@ extension DateFormatter {
             if let date = formatter.date(from: dateString) {
                 return date
             }
+            
+            // Fallback without fractional seconds
+            formatter.formatOptions = [.withInternetDateTime]
+            if let date = formatter.date(from: dateString) {
+                return date
+            }
         }
         
         let formatter = DateFormatter()
