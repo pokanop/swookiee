@@ -74,14 +74,11 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
     
     func showLoader() {
         backgroundImageView.alpha(0.3, options: [.duration(0.5)])
-        loaderView.startAnimating()
-        loaderView.alpha(1.0, options: [.duration(0.5)])
+        loaderView.show()
     }
     
     func hideLoader() {
-        loaderView.alpha(0, options: [.duration(0.5)]) {
-            self.loaderView.stopAnimating()
-        }
+        loaderView.hide()
         backgroundImageView.alpha(1.0, options: [.duration(0.5)])
     }
     

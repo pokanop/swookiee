@@ -48,14 +48,11 @@ class RelationshipCell: UICollectionViewCell, ReuseProvider {
     
     func showLoader() {
         relationshipLabel.alpha(0.0, options: [.duration(0.5)])
-        loader.startAnimating()
-        loader.alpha(1.0, options: [.duration(0.5)])
+        loader.show()
     }
     
     func hideLoader() {
-        loader.alpha(0, options: [.duration(0.5)]) {
-            self.loader.stopAnimating()
-        }
+        loader.hide()
         relationshipLabel.alpha(1.0, options: [.duration(0.5)])
     }
     

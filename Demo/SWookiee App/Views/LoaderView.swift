@@ -62,6 +62,8 @@ class LoaderView: UIView {
         
         super.init(frame: .zero)
         
+        translatesAutoresizingMaskIntoConstraints = false
+        
         layer.addSublayer(replicator)
         NSLayoutConstraint.activate([
             widthAnchor.constraint(equalToConstant: totalWidth),
@@ -73,12 +75,23 @@ class LoaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func startAnimating() {
+    private func startAnimating() {
         ball.add(animation, forKey: "scale")
     }
     
-    func stopAnimating() {
+    private func stopAnimating() {
         ball.removeAnimation(forKey: "scale")
+    }
+    
+    func show() {
+        startAnimating()
+        alpha(1.0, options: [.duration(0.5)])
+    }
+    
+    func hide() {
+        alpha(0, options: [.duration(0.5)]) {
+            self.stopAnimating()
+        }
     }
     
 }
