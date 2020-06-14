@@ -42,6 +42,11 @@ class ImageCell: UICollectionViewCell, ReuseProvider {
     }
     
     func loadImage(url: URL) {
+        if let image = ImageService.shared.get(url: url) {
+            imageView.image = image
+            return
+        }
+        
         showLoader()
         DispatchQueue.global().async {
             guard let data = try? Data(contentsOf: url),

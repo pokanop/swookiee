@@ -23,6 +23,18 @@ class ImageService {
     
     private init() {}
     
+    func get(url: URL) -> UIImage? {
+        return cache[url]
+    }
+    
+    func set(image: UIImage, for url: URL) {
+        cache[url] = image
+    }
+    
+    func clear() {
+        cache.removeAll()
+    }
+    
     func search(for term: String) -> Future<ImageList, Error> {
         let url = searchURL(for: term)
         return Future { resolver in
