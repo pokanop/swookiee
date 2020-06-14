@@ -24,6 +24,8 @@
 		9716B28C247CB46800AD59B9 /* ResourceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B28B247CB46800AD59B9 /* ResourceExtensions.swift */; };
 		9716B28E247CBE4600AD59B9 /* AttributeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B28D247CBE4600AD59B9 /* AttributeCell.swift */; };
 		9716B290247CBE5900AD59B9 /* RelationshipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716B28F247CBE5900AD59B9 /* RelationshipCell.swift */; };
+		9718947A24959DB900530EEA /* StarfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9718947924959DB900530EEA /* StarfieldView.swift */; };
+		9718947C2495A1E300530EEA /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9718947B2495A1E300530EEA /* Content.swift */; };
 		977EBBA72467D7AE009F1A93 /* SWookiee in Frameworks */ = {isa = PBXBuildFile; productRef = 977EBBA62467D7AE009F1A93 /* SWookiee */; };
 		97E071BD2478DBF200055C42 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E071BC2478DBF200055C42 /* IntroViewController.swift */; };
 		97E071BF2478EAE500055C42 /* TiltedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E071BE2478EAE500055C42 /* TiltedTextView.swift */; };
@@ -67,6 +69,8 @@
 		9716B28B247CB46800AD59B9 /* ResourceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceExtensions.swift; sourceTree = "<group>"; };
 		9716B28D247CBE4600AD59B9 /* AttributeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeCell.swift; sourceTree = "<group>"; };
 		9716B28F247CBE5900AD59B9 /* RelationshipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipCell.swift; sourceTree = "<group>"; };
+		9718947924959DB900530EEA /* StarfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarfieldView.swift; sourceTree = "<group>"; };
+		9718947B2495A1E300530EEA /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		97E071BC2478DBF200055C42 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		97E071BE2478EAE500055C42 /* TiltedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltedTextView.swift; sourceTree = "<group>"; };
 		97FF6F4824677CB700B9FB56 /* SWookiee App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SWookiee App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +133,7 @@
 				9716B28F247CBE5900AD59B9 /* RelationshipCell.swift */,
 				9716B267247A00F000AD59B9 /* ResourceCell.swift */,
 				9716B270247A349100AD59B9 /* SectionCell.swift */,
+				9718947924959DB900530EEA /* StarfieldView.swift */,
 				97E071BE2478EAE500055C42 /* TiltedTextView.swift */,
 			);
 			path = Views;
@@ -149,6 +154,7 @@
 		97E071BB2478CE2300055C42 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9718947B2495A1E300530EEA /* Content.swift */,
 				9716B287247C8F2200AD59B9 /* LayoutPosition.swift */,
 				9716B272247A37D200AD59B9 /* Section.swift */,
 			);
@@ -277,6 +283,7 @@
 				9716B268247A00F000AD59B9 /* ResourceCell.swift in Sources */,
 				9716B286247C8BC100AD59B9 /* ArrayExtensions.swift in Sources */,
 				9716B284247AF95700AD59B9 /* LoaderView.swift in Sources */,
+				9718947C2495A1E300530EEA /* Content.swift in Sources */,
 				97FF6F4C24677CB700B9FB56 /* AppDelegate.swift in Sources */,
 				97FF6F4E24677CB700B9FB56 /* SceneDelegate.swift in Sources */,
 				97E071BD2478DBF200055C42 /* IntroViewController.swift in Sources */,
@@ -285,6 +292,7 @@
 				9716B26F247A056F00AD59B9 /* ReuseProvider.swift in Sources */,
 				9716B290247CBE5900AD59B9 /* RelationshipCell.swift in Sources */,
 				9716B28A247C960300AD59B9 /* ResourceViewController.swift in Sources */,
+				9718947A24959DB900530EEA /* StarfieldView.swift in Sources */,
 				9716B288247C8F2200AD59B9 /* LayoutPosition.swift in Sources */,
 				9716B280247AE98900AD59B9 /* NavigationController.swift in Sources */,
 				9716B26D247A049900AD59B9 /* KindProvider.swift in Sources */,

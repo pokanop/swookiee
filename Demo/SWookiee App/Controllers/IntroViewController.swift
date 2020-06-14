@@ -10,6 +10,8 @@ import Boing
 
 class IntroViewController: UIViewController {
     
+    private let starfieldView: StarfieldView = StarfieldView()
+    
     private lazy var tiltedTextView: TiltedTextView = {
         let view = TiltedTextView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +46,9 @@ class IntroViewController: UIViewController {
         
         // TODO: Add star field background, look into `CAEmitterLayer`
         view.backgroundColor = .black
+        
+        view.addSubview(starfieldView)
+        LayoutPosition.stretch.constraints(for: starfieldView, relativeTo: view).activate()
         
         view.addSubview(tiltedTextView)
         LayoutPosition.stretch.constraints(for: tiltedTextView, relativeTo: view).activate()

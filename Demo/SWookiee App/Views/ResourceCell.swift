@@ -10,7 +10,9 @@ import SWookiee
 
 class ResourceCell: UICollectionViewCell, ReuseProvider {
     
-    private let loader: LoaderView = {
+    private let starfieldView: StarfieldView = StarfieldView()
+    
+    private let loaderView: LoaderView = {
         let view = LoaderView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.alpha = 0
@@ -50,12 +52,15 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
         contentView.addSubview(backgroundImageView)
         LayoutPosition.stretch.constraints(for: backgroundImageView, relativeTo: contentView).activate()
         
+        backgroundImageView.addSubview(starfieldView)
+        LayoutPosition.stretch.constraints(for: starfieldView, relativeTo: backgroundImageView).activate()
+        
         backgroundImageView.addSubview(label)
         LayoutPosition.center.constraints(for: label, relativeTo: backgroundImageView).activate()
         LayoutPosition.width.constraints(for: label, relativeTo: backgroundImageView, padding: 8.0).activate()
         
-        contentView.addSubview(loader)
-        LayoutPosition.center.constraints(for: loader, relativeTo: contentView).activate()
+        contentView.addSubview(loaderView)
+        LayoutPosition.center.constraints(for: loaderView, relativeTo: contentView).activate()
     }
     
     required init?(coder: NSCoder) {
@@ -69,13 +74,13 @@ class ResourceCell: UICollectionViewCell, ReuseProvider {
     
     func showLoader() {
         backgroundImageView.alpha(0.3, options: [.duration(0.5)])
-        loader.startAnimating()
-        loader.alpha(1.0, options: [.duration(0.5)])
+        loaderView.startAnimating()
+        loaderView.alpha(1.0, options: [.duration(0.5)])
     }
     
     func hideLoader() {
-        loader.alpha(0, options: [.duration(0.5)]) {
-            self.loader.stopAnimating()
+        loaderView.alpha(0, options: [.duration(0.5)]) {
+            self.loaderView.stopAnimating()
         }
         backgroundImageView.alpha(1.0, options: [.duration(0.5)])
     }
