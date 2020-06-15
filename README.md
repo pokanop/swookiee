@@ -1,7 +1,5 @@
 # SWookiee
 
-A Swift based library for accessing [SWAPI](https://swapi.dev) because Star Wars 🖖🎤
-
 <p align="center">
   <img src="Images/swookiee.gif" alt="animated" />
 </p>
