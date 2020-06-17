@@ -1,10 +1,12 @@
 import Foundation
 
+/// A type to represent SWAPI endpoints.
 public enum Endpoint: String, CaseIterable {
     
     case root, films, people, planets, species, starships, vehicles
     
-    var baseURL: URL {
+    /// The `URL` including the path of the endpoint.
+    public var baseURL: URL {
         switch self {
         case .root: return URL(string: "https://swapi.dev/api/")!
         case .films: return URL(string: "https://swapi.dev/api/films/")!
@@ -16,16 +18,28 @@ public enum Endpoint: String, CaseIterable {
         }
     }
     
-    func itemURL(id: Int) -> URL {
+    /// Constructs a `URL` from this endpoint and a given id.
+    ///
+    /// - Parameter id: The id of the resource.
+    /// - Returns: The constructed `URL` for the resources.
+    public func itemURL(id: Int) -> URL {
         return baseURL.appendingPathComponent("\(id)/")
     }
     
-    func pageURL(page: Int) -> URL {
+    /// Constructs a `URL` from this endpoint and a given page.
+    ///
+    /// - Parameter id: The page for the resources.
+    /// - Returns: The constructed `URL` for the resources.
+    public func pageURL(page: Int) -> URL {
         assert(self != .root)
         return baseURL.appendingPathComponent("?page=\(page)")
     }
     
-    func searchURL(search: String) -> URL {
+    /// Constructs a `URL` from this endpoint and a given search term.
+    ///
+    /// - Parameter search: The search term to find resources.
+    /// - Returns: The constructed `URL` for the resources.
+    public func searchURL(search: String) -> URL {
         assert(self != .root)
         return baseURL.appendingPathComponent("?search=\(search)")
     }

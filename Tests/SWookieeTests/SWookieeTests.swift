@@ -161,7 +161,7 @@ final class SWookieeTests: XCTestCase {
             XCTAssertTrue(person.height.count > 0)
             XCTAssertTrue(person.mass.count > 0)
             XCTAssertTrue(person.skinColor.count > 0)
-            XCTAssertTrue(person.homeworld.count > 0)
+            XCTAssertNotNil(person.homeworld)
             XCTAssertTrue(person.films.count > 0)
             XCTAssertTrue(person.starships.count > 0)
             XCTAssertTrue(person.vehicles.count > 0)

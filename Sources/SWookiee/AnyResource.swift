@@ -54,6 +54,14 @@ struct _ConcreteResourceBox<Base: Resource>: _AnyResourceBox {
     
 }
 
+/// A type-erased resource value.
+///
+/// The `AnyResource` type forwards properties and methods to
+/// an underlying `Resource` type that is boxed by this type. It allows
+/// using this type as a concrete container for a generic type.
+///
+/// Use the generic `unboxed` method to access the underlying type
+/// for use.
 @frozen public struct AnyResource {
     
     var _box: _AnyResourceBox
@@ -62,6 +70,9 @@ struct _ConcreteResourceBox<Base: Resource>: _AnyResourceBox {
         self._box = box
     }
     
+    /// Creates a type-erased resource value that wraps the given instance.
+    ///
+    /// - Parameter base: A resource value to wrap.
     public init<R: Resource>(_ base: R) {
         self.init(_box: _ConcreteResourceBox(base))
     }
@@ -85,6 +96,9 @@ extension AnyResource: Resource {
         _box._hash(into: &hasher)
     }
     
+    /// Returns the unboxed type as `T` if possible.
+    ///
+    /// - Returns: The wrapped value as `T`.
     public func unboxed<T>() -> T? {
         return _box._base as? T
     }

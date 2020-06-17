@@ -2,8 +2,12 @@ import Foundation
 
 public protocol CharactersProvider {
     
+    /// The list of `URL` for characters related to this resource.
     var characters: [URL] { get }
     
+    /// Fetches related characters for this resource.
+    ///
+    /// - Parameter completion: A completion handler with a result from the request.
     func characters(completion: ((Result<[Person], Error>) -> ())?)
     
 }
@@ -18,8 +22,12 @@ public extension CharactersProvider {
 
 public protocol FilmsProvider {
     
+    /// The list of `URL` for films related to this resource.
     var films: [URL] { get }
     
+    /// Fetches related films for this resource.
+    ///
+    /// - Parameter completion: A completion handler with a result from the request.
     func films(completion: ((Result<[Film], Error>) -> ())?)
     
 }
@@ -34,8 +42,12 @@ public extension FilmsProvider {
 
 public protocol PlanetsProvider {
     
+    /// The list of `URL` for planets related to this resource.
     var planets: [URL] { get }
     
+    /// Fetches related planets for this resource.
+    ///
+    /// - Parameter completion: A completion handler with a result from the request.
     func planets(completion: ((Result<[Planet], Error>) -> ())?)
     
 }
@@ -50,8 +62,12 @@ public extension PlanetsProvider {
 
 public protocol SpeciesProvider {
     
+    /// The list of `URL` for species related to this resource.
     var species: [URL] { get }
     
+    /// Fetches related species for this resource.
+    ///
+    /// - Parameter completion: A completion handler with a result from the request.
     func species(completion: ((Result<[Species], Error>) -> ())?)
     
 }
@@ -66,8 +82,12 @@ public extension SpeciesProvider {
 
 public protocol StarshipsProvider {
     
+    /// The list of `URL` for starships related to this resource.
     var starships: [URL] { get }
     
+    /// Fetches related starships for this resource.
+    ///
+    /// - Parameter completion: A completion handler with a result from the request.
     func starships(completion: ((Result<[Starship], Error>) -> ())?)
     
 }
@@ -82,8 +102,12 @@ public extension StarshipsProvider {
 
 public protocol VehiclesProvider {
     
+    /// The list of `URL` for vehicles related to this resource.
     var vehicles: [URL] { get }
     
+    /// Fetches related vehicles for this resource.
+    ///
+    /// - Parameter completion: A completion handler with a result from the request.
     func vehicles(completion: ((Result<[Vehicle], Error>) -> ())?)
     
 }
@@ -98,8 +122,12 @@ public extension VehiclesProvider {
 
 public protocol HomeworldProvider {
     
+    /// The related homeworld for this resource.
     var homeworld: URL? { get }
     
+    /// Fetches related homeworld for this resource.
+    ///
+    /// - Parameter completion: A completion handler with a result from the request.
     func homeworld(completion: ((Result<Planet, Error>) -> ())?)
     
 }

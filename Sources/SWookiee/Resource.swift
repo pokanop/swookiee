@@ -1,16 +1,29 @@
 import Foundation
 
+/// A generic type representing a resource available from SWAPI.
 public protocol Resource: Hashable {
     
+    /// The endpoint for the resource.
     static var endpoint: Endpoint { get }
+    
+    /// A unique id for the resource.
     var id: UUID { get }
+    
+    /// The name of the resource.
     var name: String { get }
+    
+    /// The `URL` for this resource.
     var url: URL { get }
+    
+    /// The date this resource was created.
     var created: Date { get }
+    
+    /// The date this resource was updated.
     var updated: Date { get }
     
 }
 
+/// A customized type for decoding `Resource` types
 public protocol DecodableResource: Resource & Decodable {}
 
 public extension DecodableResource {
@@ -20,18 +33,40 @@ public extension DecodableResource {
     var created: Date { Date.distantPast }
     var updated: Date { Date.distantPast }
     
+    /// Fetch a resource for a given id.
+    ///
+    /// - Parameters:
+    ///   - id: The id of a resource to fetch.
+    ///   - completion: A completion handler with a result from the request.
     static func fetch(id: Int, completion: ((Result<Self, Error>) -> ())? = nil) {
         fetch(url: endpoint.itemURL(id: id), completion: completion)
     }
     
+    /// Fetch a set of resources for a given page.
+    ///
+    /// - Parameters:
+    ///   - page: The page of the resources to fetch.
+    ///   - completion: A completion handler with a result from the request.
     static func fetch(page: Int, completion: ((Result<[Self], Error>) -> ())? = nil) {
         fetch(url: endpoint.pageURL(page: page), completion: completion)
     }
     
+    /// Fetch a set of resources for a given search term.
+    ///
+    /// - Parameters:
+    ///   - search: The term to search for when fetching resources.
+    ///   - completion: A completion handler with a result from the request.
     static func fetch(search: String, completion: ((Result<[Self], Error>) -> ())? = nil) {
         fetch(url: endpoint.searchURL(search: search), completion: completion)
     }
     
+    /// Fetch all resources of this type.
+    ///
+    /// - Note: This method will automatically follow all pages and aggregate all the resources
+    /// before calling the completion handler with the result.
+    ///
+    /// - Parameters:
+    ///   - completion: A completion handler with a result from the request.
     static func fetch(completion: ((Result<[Self], Error>) -> ())? = nil) {
         fetch(url: endpoint.baseURL, completion: completion)
     }

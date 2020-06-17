@@ -1,14 +1,27 @@
 import Foundation
 
+/// A root resource type from SWAPI.
 public struct Root: DecodableResource {
     
     public static let endpoint: Endpoint = .root
     public let id: UUID = UUID()
+    
+    /// The `URL` for films resources.
     public let films: URL
+    
+    /// The `URL` for people resources.
     public let people: URL
+    
+    /// The `URL` for planets resources.
     public let planets: URL
+    
+    /// The `URL` for species resources.
     public let species: URL
+    
+    /// The `URL` for starships resources.
     public let starships: URL
+    
+    /// The `URL` for vehicles resources.
     public let vehicles: URL
     
     enum CodingKeys: String, CodingKey {

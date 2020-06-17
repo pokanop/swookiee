@@ -1,5 +1,6 @@
 import Foundation
 
+/// A film resource type from SWAPI.
 public struct Film: DecodableResource {
     
     public static let endpoint: Endpoint = .films
@@ -8,11 +9,22 @@ public struct Film: DecodableResource {
     public let url: URL
     public let created: Date
     public let updated: Date
+    
+    /// The episode number.
     public let episode: Int
+    
+    /// The opening crawl shown at the beginning of the movie.
     public let openingCrawl: String
+    
+    /// The director of the movie.
     public let director: String
+    
+    /// The producer of the movie.
     public let producer: String
+    
+    /// The release date of the movie.
     public let releaseDate: Date
+    
     public let species: [URL]
     public let starships: [URL]
     public let vehicles: [URL]
