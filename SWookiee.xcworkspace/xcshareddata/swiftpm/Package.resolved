@@ -15,8 +15,8 @@
         "repositoryURL": "git@github.com:pokanop/swookiee.git",
         "state": {
           "branch": null,
-          "revision": "7e8b60cf1c0d632cc3594cb151a178107bc9434c",
-          "version": "0.5.3"
+          "revision": "76662f5a18b81572e490e295e49c416849d6f92f",
+          "version": "0.6.0"
         }
       }
     ]
