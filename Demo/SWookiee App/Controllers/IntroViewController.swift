@@ -25,8 +25,6 @@ class IntroViewController: UIViewController {
         
         A light of hope arises from the dusty landscape in the form of Swift, so the world needed yet another library for SWAPI. Wielding a simple API and charming app to demonstrate its functionality, SWookiee emerges to save us from eternal boredom.
         
-        Hope you enjoy this as much as I did writing it.
-        
         🖖
         """
         return view

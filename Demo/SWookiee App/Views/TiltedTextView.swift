@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TiltedTextViewDelegate: class {
+protocol TiltedTextViewDelegate: AnyObject {
     
     func tiltedTextViewDidFinishScrolling()
     

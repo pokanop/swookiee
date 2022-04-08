@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol KindProvider: class {
+protocol KindProvider: AnyObject {
     
     static var kind: String { get }
     

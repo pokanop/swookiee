@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ReuseProvider: class {
+protocol ReuseProvider: AnyObject {
     
     static var reuseIdentifier: String { get }
     
