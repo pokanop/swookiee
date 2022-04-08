@@ -14,6 +14,7 @@ protocol DisplayableResource {
     var relationships: [String: Section] { get }
     
     func fetch(for relationship: String, completion: @escaping ([AnyResource]) -> ())
+    
 }
 
 extension DisplayableResource {

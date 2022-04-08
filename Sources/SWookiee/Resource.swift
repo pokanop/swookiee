@@ -194,7 +194,7 @@ extension DecodableResource {
         
         Network.shared.provider.dataTask(with: url) { (data, response, error) in
             DispatchQueue.global().async {
-                var dsema = DispatchSemaphore(value: 0)
+                let dsema = DispatchSemaphore(value: 0)
                 var results: [T] = []
                 var errors: [Error] = []
                 

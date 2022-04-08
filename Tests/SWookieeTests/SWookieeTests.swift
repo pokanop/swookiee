@@ -289,10 +289,11 @@ final class SWookieeTests: XCTestCase {
     }
     
     func testNetworkError() {
-        let network = TestNetwork()
-        Network.shared.provider = network
+        Network.shared.provider = TestNetwork.session
         
-        network.error = NSError(domain: NSCocoaErrorDomain, code: NSURLErrorBadURL, userInfo: nil)
+        let error = NSError(domain: NSCocoaErrorDomain, code: NSURLErrorBadURL, userInfo: nil)
+        TestNetwork.requestHandler = { _ in throw error }
+        
         Root.fetch { result in
             guard case .failure(let error) = result else {
                 XCTFail()
@@ -302,13 +303,12 @@ final class SWookieeTests: XCTestCase {
                 XCTFail()
                 return
             }
-            XCTAssertEqual(underlyingError.localizedDescription, network.error?.localizedDescription)
+            XCTAssertEqual(underlyingError.localizedDescription, error.localizedDescription)
         }
     }
     
     func testDataError() {
-        let network = TestNetwork()
-        Network.shared.provider = network
+        Network.shared.provider = TestNetwork.session
         
         Root.fetch { result in
             guard case .failure(let error) = result else {
@@ -324,10 +324,11 @@ final class SWookieeTests: XCTestCase {
     }
     
     func testDecoderError() {
-        let network = TestNetwork()
-        Network.shared.provider = network
+        Network.shared.provider = TestNetwork.session
         
-        network.data = "[}]{".data(using: .utf8)
+        let data = "[}]{".data(using: .utf8)!
+        TestNetwork.requestHandler = { _ in return (HTTPURLResponse(), data) }
+        
         Root.fetch { result in
             guard case .failure(let error) = result else {
                 XCTFail()
